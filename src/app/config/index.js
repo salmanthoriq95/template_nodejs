@@ -1,7 +1,7 @@
 // @ts-check
 "use strict";
 
-export default {
+module.exports = {
 	app: {
 		HOST: process.env.APP_HOST || "127.0.0.1",
 		PORT: process.env.APP_PORT || 3000,

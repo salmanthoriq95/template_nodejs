@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { TemplateController } from "./controllers.template";
+const { Router } = require("express");
+const TemplateController = require("./controllers.template");
 
 const router = Router();
 const templateController = new TemplateController();
@@ -10,5 +10,5 @@ router.post("/", templateController.getTemplate);
 router.delete("/:id", templateController.getTemplate);
 router.put("/:id", templateController.getTemplate);
 
-export default router;
+module.exports = router;
 

@@ -1,7 +1,7 @@
 // @ts-check
 "use strict";
 
-import { NextFunction, Request, Response } from "express";
+const { NextFunction, Request, Response } = require("express");
 
 /**
  * @typedef IErrorResponse
@@ -20,7 +20,7 @@ import { NextFunction, Request, Response } from "express";
  * @param {NextFunction} next
  * @returns {*}
  */
-export default (error, req, res, next) => {
+module.exports = (error, req, res, next) => {
 	/**
 	 * @type {IErrorResponse}
 	 */

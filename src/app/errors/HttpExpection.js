@@ -13,7 +13,7 @@
  */
 class HttpExpection extends Error {
 	/**
-	 *
+	 * @constructor
 	 * @param {number} statusCode
 	 * @param {IHttpData} httpData
 	 */
@@ -28,5 +28,5 @@ class HttpExpection extends Error {
 	}
 }
 
-export default HttpExpection;
+module.exports = HttpExpection;
 

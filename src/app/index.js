@@ -1,18 +1,18 @@
 // @ts-check
 "use strict";
 
-import { Application } from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
-import errorHandler from "./errors";
-import routes from "./routes";
+const { Application } = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const errorHandler = require("./errors");
+const routes = require("./routes");
 
 /**
  * default export express modules and middleware
  * @param {Application} app
  * @returns {void}
  */
-export default (app) => {
+module.exports = (app) => {
 	// Middleware
 	app.use(cors());
 	app.use(bodyParser.json());

@@ -1,9 +1,9 @@
 // @ts-check
 "use strict";
 
-import express from "express";
-import config from "./app/config";
-import loaderApp from "./app";
+const express = require("express");
+const config = require("./app/config");
+const loaderApp = require("./app");
 
 const app = express();
 
