@@ -6,6 +6,9 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const errorHandler = require("./errors");
 const routes = require("./routes");
+const Logger = require("./utils/logger");
+
+const logger = new Logger();
 
 /**
  * default export express modules and middleware
@@ -17,6 +20,10 @@ module.exports = (app) => {
 	app.use(cors());
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
+
+	// Logger
+	// app.set("trust proxy", true);
+	app.use(logger.log);
 
 	// Api Handling
 	Object.keys(routes).forEach((key) => {

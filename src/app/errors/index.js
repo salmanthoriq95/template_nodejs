@@ -21,6 +21,7 @@ const { NextFunction, Request, Response } = require("express");
  * @returns {*}
  */
 module.exports = (error, req, res, next) => {
+	console.log(error);
 	/**
 	 * @type {IErrorResponse}
 	 */
@@ -35,7 +36,7 @@ module.exports = (error, req, res, next) => {
 	if (error.name === "HttpExpection") {
 		return res.status(error.statusCode).json(errorResponse);
 	}
-	console.log(errorResponse);
+
 	return res.status(500).json(
 		req.query.debug === "1"
 			? errorResponse

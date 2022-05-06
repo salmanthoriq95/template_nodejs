@@ -4,7 +4,8 @@
 	"description": "this is backend template using :",
 	"main": "index.js",
 	"scripts": {
-		"dev:start:win": "nodemon src/server",
+		"start:dev:win": "set ENV_NAME=dev&&nodemon src/server",
+		"start:dev:linux": "nodemon src/server",
 		"doc:jsdoc": "jsdoc -c jsdoc.json"
 	},
 	"repository": {
@@ -19,7 +20,9 @@
 	},
 	"homepage": "https://gitlab.com/salmanthoriq95/template#readme",
 	"dependencies": {
+		"cli-color": "^2.0.2",
 		"cors": "^2.8.5",
+		"dotenv": "^16.0.0",
 		"express": "^4.18.1",
 		"mysql2": "^2.3.3"
 	},
@@ -30,4 +33,3 @@
 		"prettier": "^2.6.2"
 	}
 }
-

@@ -18,7 +18,6 @@ class HttpExpection extends Error {
 	 * @param {IHttpData} httpData
 	 */
 	constructor(statusCode, httpData) {
-		console.log(httpData.message);
 		super(httpData.message);
 		this.name = "HttpExpection";
 		/** @type {number} */
