@@ -1,6 +1,15 @@
 // @ts-check
+"use strict";
 
-const HttpException = require("../../errors/HttpExpection");
+const { Tracer } = require("../../utils");
+const tracer = new Tracer();
+
+const Queries = require("./queries.template");
+const query = new Queries();
+
+/**
+ * @typedef {import('./Interfaces.template.js').IGetValidatorInputReturn} IGetValidatorInputReturn
+ */
 
 /**
  * @class
@@ -9,11 +18,13 @@ const HttpException = require("../../errors/HttpExpection");
 module.exports = class TemplateServices {
 	/**
 	 * get method templateS
-	 * @param {object} payload
+	 * @param {IGetValidatorInputReturn} payload
 	 */
-	getTemplateService(payload) {
-		// throw Error.captureStackTrace({});
-		return "hello world";
+	async getTemplateService(payload) {
+		const trace = tracer.startTrace(new Error(), +payload.trace);
+		const result = await query.getAllQueryTemplate(+payload.trace);
+		tracer.endTrace(trace, +payload.trace);
+		return result;
 	}
 };
 

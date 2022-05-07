@@ -8,8 +8,8 @@ module.exports = {
 	},
 	db: {
 		HOST: process.env.DB_HOST || "127.0.0.1",
-		DATABASE: process.env.DB_NAME || "dbName",
-		PORT: process.env.DB_PORT || 3000,
+		DATABASE: process.env.DB_NAME || "testdb",
+		PORT: process.env.DB_PORT || 3306,
 		USER: process.env.DB_USER || "root",
 		PASSWORD: process.env.DB_PASS || "",
 	},

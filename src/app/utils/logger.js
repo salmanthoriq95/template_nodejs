@@ -3,6 +3,8 @@
 
 const { Request, Response, NextFunction } = require("express");
 const clc = require("cli-color");
+const { JSDOM } = require("jsdom");
+const { window } = new JSDOM();
 
 /**
  * @class
@@ -64,7 +66,24 @@ module.exports = class Logger {
 				);
 		}
 		console.log(`${timestamp} ${method} [${request}]`);
-		req._startRequest = performance.now();
+		req._startRequest = window.performance.now();
 		return next();
+	}
+
+	/**
+	 * end of request logs
+	 * @param {number} startTime
+	 * @returns {void}
+	 */
+	endLog(startTime, consoleIt) {
+		if (process.env.APP_HOST !== "PROD") {
+			const executeTime = (window.performance.now() - startTime) / 1000;
+			console.log(
+				clc.cyan.bold(
+					`[${new Date().toUTCString()}] [END REQ] : ${executeTime}s`
+				)
+			);
+		}
+		return;
 	}
 };

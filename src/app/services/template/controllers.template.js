@@ -2,11 +2,19 @@
 "use strict";
 
 const { Request, Response, NextFunction } = require("express");
+const { Tracer, Logger } = require("../../utils");
 const ServiceTemplate = require("./services.template");
-const utils = require("../../utils/tracer");
+const ValidatorsTemplate = require("./validators.template");
 
+const tracer = new Tracer();
+const logger = new Logger();
 const services = new ServiceTemplate();
+const validators = new ValidatorsTemplate();
 
+/**
+ * @class
+ * @classdesc template controller
+ */
 module.exports = class TemplateController {
 	/**
 	 * get controller temlate
@@ -16,14 +24,14 @@ module.exports = class TemplateController {
 	 */
 	async getTemplate(req, res, next) {
 		try {
-			console.log(req._startRequest);
-			utils.startTrace(new Error());
-			console.table({
-				name1: { a: 1, b: "Y" },
-				naem2: { a: "Z", b: 2 },
-			});
-			services.getTemplateService(req);
-			res.send("hello world");
+			const trace = tracer.startTrace(new Error(), +req.query.trace);
+			const validateResult = validators.getValidatorinput(req);
+			const serviceResult = await services.getTemplateService(
+				validateResult
+			);
+			res.status(200).send(serviceResult);
+			tracer.endTrace(trace, +req.query.trace);
+			logger.endLog(req._startRequest);
 		} catch (error) {
 			next(error);
 		}
