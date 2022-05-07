@@ -2,11 +2,10 @@
 	"name": "template",
 	"version": "1.0.0",
 	"description": "this is backend template using :",
-	"main": "index.js",
+	"main": "src/server.js",
 	"scripts": {
 		"start:dev:win": "set ENV_NAME=dev&&nodemon src/server",
-		"start:dev:linux": "nodemon src/server",
-		"doc:jsdoc": "jsdoc -c jsdoc.json"
+		"start:dev:linux": "APP_ENV=dev&&nodemon src/server"
 	},
 	"repository": {
 		"type": "git",
@@ -30,8 +29,8 @@
 	"devDependencies": {
 		"eslint": "^8.14.0",
 		"eslint-config-prettier": "^8.5.0",
-		"jsdoc": "^3.6.10",
 		"jsdom": "^19.0.0",
 		"prettier": "^2.6.2"
 	}
 }
+
