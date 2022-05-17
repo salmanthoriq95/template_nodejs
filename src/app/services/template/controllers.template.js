@@ -59,7 +59,7 @@ module.exports = class TemplateController {
 	}
 
 	/**
-	 *
+	 * create new data and store to database
 	 * @param {Request} req
 	 * @param {Response} res
 	 * @param {NextFunction} next
@@ -69,6 +69,48 @@ module.exports = class TemplateController {
 			const trace = tracer.startTrace(new Error(), +req.query.trace);
 			const validateResult = validators.postValidatorinput(req);
 			const serviceResult = await services.postTemplateService(
+				validateResult
+			);
+			res.status(200).send(serviceResult);
+			tracer.endTrace(trace, +req.query.trace);
+			logger.endLog(req._startRequest);
+		} catch (error) {
+			next(error);
+		}
+	}
+
+	/**
+	 * Update data and store to database
+	 * @param {Request} req
+	 * @param {Response} res
+	 * @param {NextFunction} next
+	 */
+	async putControllerTemplate(req, res, next) {
+		try {
+			const trace = tracer.startTrace(new Error(), +req.query.trace);
+			const validateResult = validators.putValidatorinput(req);
+			const serviceResult = await services.putTemplateService(
+				validateResult
+			);
+			res.status(200).send(serviceResult);
+			tracer.endTrace(trace, +req.query.trace);
+			logger.endLog(req._startRequest);
+		} catch (error) {
+			next(error);
+		}
+	}
+
+	/**
+	 * delete data from database
+	 * @param {Request} req
+	 * @param {Response} res
+	 * @param {NextFunction} next
+	 */
+	async deleteControllerTemplate(req, res, next) {
+		try {
+			const trace = tracer.startTrace(new Error(), +req.query.trace);
+			const validateResult = validators.deleteValidatorinput(req);
+			const serviceResult = await services.deleteTemplateService(
 				validateResult
 			);
 			res.status(200).send(serviceResult);

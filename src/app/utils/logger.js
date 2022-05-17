@@ -75,7 +75,7 @@ module.exports = class Logger {
 	 * @param {number} startTime
 	 * @returns {void}
 	 */
-	endLog(startTime, consoleIt) {
+	endLog(startTime) {
 		if (process.env.APP_HOST !== "PROD") {
 			const executeTime = (window.performance.now() - startTime) / 1000;
 			console.log(

@@ -22,7 +22,22 @@
  */
 
 /**
+ * @typedef {object} IPutValidatorInputReturn
+ * @property {number} debug
+ * @property {number} trace
+ * @property {IPutBodyFormatInput} data
+ */
+
+/**
  * @typedef {object} IPostBodyFormatInput
+ * @property {string} title
+ * @property {string} content
+ * @property {string} author
+ */
+
+/**
+ * @typedef {object} IPutBodyFormatInput
+ * @property {number} id
  * @property {string} title
  * @property {string} content
  * @property {string} author

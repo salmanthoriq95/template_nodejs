@@ -5,7 +5,8 @@
 	"main": "src/server.js",
 	"scripts": {
 		"start:dev:win": "set ENV_NAME=dev&&nodemon src/server",
-		"start:dev:linux": "APP_ENV=dev&&nodemon src/server"
+		"start:dev:linux": "APP_ENV=dev&&nodemon src/server",
+		"start:prod:win": "set ENV_NAME=prod&&nodemon src/server"
 	},
 	"repository": {
 		"type": "git",

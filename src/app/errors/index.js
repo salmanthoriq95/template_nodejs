@@ -21,7 +21,6 @@ const { NextFunction, Request, Response } = require("express");
  * @returns {*}
  */
 module.exports = (error, req, res, next) => {
-	console.log(error);
 	/**
 	 * @type {IErrorResponse}
 	 */
