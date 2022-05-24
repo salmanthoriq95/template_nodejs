@@ -93,7 +93,7 @@ module.exports = class Debugger {
 	errorLog(endPoint, method, userAgent, ipAddress, reqData) {
 		_PrintConsole(
 			"error",
-			new Date().toLocaleDateString(),
+			new Date().toLocaleString(),
 			endPoint,
 			method,
 			userAgent,
