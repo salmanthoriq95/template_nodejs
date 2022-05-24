@@ -7,6 +7,12 @@ const { Logger } = require("../../utils");
 const ServiceTemplate = require("./services.template");
 const ValidatorsTemplate = require("./validators.template");
 
+const {
+	getServicesTemplate,
+	inputGetValidatorTemplate,
+	OutputGetValidatorTemplate,
+} = require("./template.services");
+
 const logger = new Logger();
 
 const services = new ServiceTemplate();
@@ -26,11 +32,19 @@ module.exports = class TemplateController {
 	async getTemplate(req, res, next) {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
-			const validateResult = validators.getValidatorinput(req);
-			const serviceResult = await services.getTemplateService(
+
+			const validateResult =
+				inputGetValidatorTemplate.getValidatorinput(req);
+			const serviceResult = await getServicesTemplate.getTemplateService(
 				validateResult
 			);
-			res.status(200).send(serviceResult);
+			const formatReturn = OutputGetValidatorTemplate.getValidatorOutput(
+				serviceResult,
+				+req.query.trace
+			);
+
+			res.status(200).send(formatReturn);
+
 			logger.endTrace(trace, +req.query.trace);
 			logger.endLog(req._startRequest, req.url);
 		} catch (error) {
@@ -47,11 +61,18 @@ module.exports = class TemplateController {
 	async getByParamsIdTemplate(req, res, next) {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
-			const validateResult = validators.getByIdParamsValidatorinput(req);
-			const serviceResult = await services.getbyIdParamsTemplateService(
-				validateResult
-			);
-			res.status(200).send(serviceResult);
+			const validateResult =
+				inputGetValidatorTemplate.getByIdParamsValidatorinput(req);
+			const serviceResult =
+				await getServicesTemplate.getbyIdParamsTemplateService(
+					validateResult
+				);
+			const formatReturn =
+				OutputGetValidatorTemplate.getByIdParamsValidatorOutput(
+					serviceResult,
+					+req.query.trace
+				);
+			res.status(200).send(formatReturn);
 			logger.endTrace(trace, +req.query.trace);
 			logger.endLog(req._startRequest, req.url);
 		} catch (error) {

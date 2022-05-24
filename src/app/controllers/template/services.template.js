@@ -22,33 +22,6 @@ const HttpExpection = require("../../errors/HttpExpection");
  */
 module.exports = class TemplateServices {
 	/**
-	 * get method templateS
-	 * @param {IGetValidatorInputReturn} payload
-	 * @returns {Promise<*>}
-	 */
-	async getTemplateService(payload) {
-		const trace = logger.startTrace(new Error(), +payload.trace);
-		const result = await query.getAllQueryTemplate(+payload.trace);
-		logger.endTrace(trace, +payload.trace);
-		return result;
-	}
-
-	/**
-	 * get by id params template servide
-	 * @param {IGetByIdParamsValidatorInputReturn} payload
-	 * @returns {Promise<*>}
-	 */
-	async getbyIdParamsTemplateService(payload) {
-		const trace = logger.startTrace(new Error(), +payload.trace);
-		const result = await query.getByIdQueryTemplate(
-			+payload.trace,
-			payload.id
-		);
-		logger.endTrace(trace, +payload.trace);
-		return result;
-	}
-
-	/**
 	 * get by id params template servide
 	 * @param {IGetByIdParamsValidatorInputReturn} payload
 	 * @returns {Promise<{success: boolean}>}
