@@ -43,28 +43,4 @@ module.exports = class TemplateServices {
 		logger.endTrace(trace, +payload.trace);
 		return { success: true };
 	}
-
-	/**
-	 * put template service
-	 * @param {IPutValidatorInputReturn} payload
-	 * @returns {Promise<{success:boolean}>}
-	 */
-	async putTemplateService(payload) {
-		const trace = logger.startTrace(new Error(), +payload.trace);
-		const isIdExisted = await query.getByIdQueryTemplate(
-			+payload.trace,
-			payload.data.id
-		);
-
-		if (!isIdExisted || Object.keys(isIdExisted).length === 0) {
-			throw new HttpExpection(404, { message: "Data not Found!" });
-		}
-
-		const result = await query.putQueryTemplate(
-			+payload.trace,
-			payload.data
-		);
-		logger.endTrace(trace, +payload.trace);
-		return { success: true };
-	}
 };

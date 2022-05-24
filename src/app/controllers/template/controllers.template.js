@@ -14,6 +14,9 @@ const {
 	postTemplateServices,
 	inputPostValidatorTemplate,
 	OutputPostValidatorTemplate,
+	putTemplateService,
+	inputPutValidatorTemplate,
+	OutputPutValidatorTemplate,
 } = require("./template.services");
 
 const logger = new Logger();
@@ -120,11 +123,17 @@ module.exports = class TemplateController {
 	async putControllerTemplate(req, res, next) {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
-			const validateResult = validators.putValidatorinput(req);
-			const serviceResult = await services.putTemplateService(
+			const validateResult =
+				inputPutValidatorTemplate.putValidatorinput(req);
+			const serviceResult = await putTemplateService.putTemplateService(
 				validateResult
 			);
-			res.status(200).send(serviceResult);
+			const formatReturn = OutputPutValidatorTemplate.putValidatorinput(
+				serviceResult.success,
+				+req.query.trace,
+				serviceResult.message
+			);
+			res.status(200).send(formatReturn);
 			logger.endTrace(trace, +req.query.trace);
 			logger.endLog(req._startRequest, req.url);
 		} catch (error) {
