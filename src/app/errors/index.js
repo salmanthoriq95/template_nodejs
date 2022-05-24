@@ -2,7 +2,9 @@
 "use strict";
 
 const { NextFunction, Request, Response } = require("express");
+const { Logger } = require("../utils");
 
+const logger = new Logger();
 /**
  * @typedef IErrorResponse
  * @type {object}
@@ -29,6 +31,15 @@ module.exports = (error, req, res, next) => {
 		message: error.message,
 		data: error.data,
 	};
+
+	// TODO : console name that fn broken
+	logger.errorLog(
+		req.url,
+		req.method,
+		req.headers["user-agent"],
+		req.ip,
+		errorResponse
+	);
 
 	if (req.query.debug === "1") errorResponse.stack = error.stack;
 

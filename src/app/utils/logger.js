@@ -15,7 +15,7 @@ const { window } = new JSDOM();
  * @property {number} startCalled
  */
 
-// NOTE : this function it's not binding with this, "this" empty object
+// NOTE : this function it's not binding with "this", "this" empty object
 /**
  * print log to terminal or console
  * @param {string} consoleType type of console INFO, ERROR, FATAL, DEBUG, WARN, TRACE
@@ -82,6 +82,26 @@ const _PrintConsole = (
  * @classdesc logger manual, it could be changed following needs
  */
 module.exports = class Debugger {
+	/**
+	 * console the error
+	 * @param {*} endPoint
+	 * @param {*} [method]
+	 * @param {*} [userAgent]
+	 * @param {*} [ipAddress]
+	 * @param {*} [reqData]
+	 */
+	errorLog(endPoint, method, userAgent, ipAddress, reqData) {
+		_PrintConsole(
+			"error",
+			new Date().toLocaleDateString(),
+			endPoint,
+			method,
+			userAgent,
+			ipAddress,
+			reqData
+		);
+	}
+
 	/**
 	 * create a log everytime user hit api
 	 * @param {Request} req
@@ -200,6 +220,7 @@ module.exports = class Debugger {
 		}
 		return returnedData;
 	}
+
 	/**
 	 * end of tracing functions
 	 * @param {ITraceData} traceData
