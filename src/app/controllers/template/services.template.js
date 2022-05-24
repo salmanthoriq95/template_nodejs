@@ -45,21 +45,6 @@ module.exports = class TemplateServices {
 	}
 
 	/**
-	 * post template service
-	 * @param {IPostValidatorInputReturn} payload
-	 * @returns {Promise<{success:boolean}>}
-	 */
-	async postTemplateService(payload) {
-		const trace = logger.startTrace(new Error(), +payload.trace);
-		const result = await query.postQueryTemplate(
-			+payload.trace,
-			payload.data
-		);
-		logger.endTrace(trace, +payload.trace);
-		return { success: true };
-	}
-
-	/**
 	 * put template service
 	 * @param {IPutValidatorInputReturn} payload
 	 * @returns {Promise<{success:boolean}>}

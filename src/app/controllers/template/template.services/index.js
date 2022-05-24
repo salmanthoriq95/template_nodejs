@@ -5,9 +5,18 @@ const GetServicesTemplate = require("./get.template.services/get.services.templa
 const InputGetValidatorTemplate = require("./get.template.services/get.template.validators/input.get.validators.template");
 const OutputGetValidatorTemplate = require("./get.template.services/get.template.validators/output.get.validators.template");
 
+const PostTemplateServices = require("./post.template.services/post.services.template");
+const InputPostValidatorTemplate = require("./post.template.services/post.template.validators/input.post.validators.template");
+const OutputPostValidatorTemplate = require("./post.template.services/post.template.validators/output.post.validators.template");
+
 module.exports = {
 	// GET validators and Services
 	getServicesTemplate: new GetServicesTemplate(),
 	inputGetValidatorTemplate: new InputGetValidatorTemplate(),
 	OutputGetValidatorTemplate: new OutputGetValidatorTemplate(),
+
+	// POST validators and services
+	postTemplateServices: new PostTemplateServices(),
+	inputPostValidatorTemplate: new InputPostValidatorTemplate(),
+	OutputPostValidatorTemplate: new OutputPostValidatorTemplate(),
 };

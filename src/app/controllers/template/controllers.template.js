@@ -11,6 +11,9 @@ const {
 	getServicesTemplate,
 	inputGetValidatorTemplate,
 	OutputGetValidatorTemplate,
+	postTemplateServices,
+	inputPostValidatorTemplate,
+	OutputPostValidatorTemplate,
 } = require("./template.services");
 
 const logger = new Logger();
@@ -89,10 +92,17 @@ module.exports = class TemplateController {
 	async postControllerTemplate(req, res, next) {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
-			const validateResult = validators.postValidatorinput(req);
-			const serviceResult = await services.postTemplateService(
-				validateResult
+
+			const validateResult =
+				inputPostValidatorTemplate.postValidatorinput(req);
+			const serviceResult =
+				await postTemplateServices.postTemplateService(validateResult);
+			const formatReturn = OutputPostValidatorTemplate.postValidatorinput(
+				serviceResult.success,
+				+req.query.trace,
+				serviceResult.message
 			);
+
 			res.status(200).send(serviceResult);
 			logger.endTrace(trace, +req.query.trace);
 			logger.endLog(req._startRequest, req.url);
