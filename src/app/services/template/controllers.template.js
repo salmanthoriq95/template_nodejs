@@ -2,12 +2,12 @@
 "use strict";
 
 const { Request, Response, NextFunction } = require("express");
-const { Tracer, Logger } = require("../../utils");
+const { Logger } = require("../../utils");
 const ServiceTemplate = require("./services.template");
 const ValidatorsTemplate = require("./validators.template");
 
-const tracer = new Tracer();
 const logger = new Logger();
+
 const services = new ServiceTemplate();
 const validators = new ValidatorsTemplate();
 
@@ -24,14 +24,14 @@ module.exports = class TemplateController {
 	 */
 	async getTemplate(req, res, next) {
 		try {
-			const trace = tracer.startTrace(new Error(), +req.query.trace);
+			const trace = logger.startTrace(new Error(), +req.query.trace);
 			const validateResult = validators.getValidatorinput(req);
 			const serviceResult = await services.getTemplateService(
 				validateResult
 			);
 			res.status(200).send(serviceResult);
-			tracer.endTrace(trace, +req.query.trace);
-			logger.endLog(req._startRequest);
+			logger.endTrace(trace, +req.query.trace);
+			logger.endLog(req._startRequest, req.url);
 		} catch (error) {
 			next(error);
 		}
@@ -45,14 +45,14 @@ module.exports = class TemplateController {
 	 */
 	async getByParamsIdTemplate(req, res, next) {
 		try {
-			const trace = tracer.startTrace(new Error(), +req.query.trace);
+			const trace = logger.startTrace(new Error(), +req.query.trace);
 			const validateResult = validators.getByIdParamsValidatorinput(req);
 			const serviceResult = await services.getbyIdParamsTemplateService(
 				validateResult
 			);
 			res.status(200).send(serviceResult);
-			tracer.endTrace(trace, +req.query.trace);
-			logger.endLog(req._startRequest);
+			logger.endTrace(trace, +req.query.trace);
+			logger.endLog(req._startRequest, req.url);
 		} catch (error) {
 			next(error);
 		}
@@ -66,14 +66,14 @@ module.exports = class TemplateController {
 	 */
 	async postControllerTemplate(req, res, next) {
 		try {
-			const trace = tracer.startTrace(new Error(), +req.query.trace);
+			const trace = logger.startTrace(new Error(), +req.query.trace);
 			const validateResult = validators.postValidatorinput(req);
 			const serviceResult = await services.postTemplateService(
 				validateResult
 			);
 			res.status(200).send(serviceResult);
-			tracer.endTrace(trace, +req.query.trace);
-			logger.endLog(req._startRequest);
+			logger.endTrace(trace, +req.query.trace);
+			logger.endLog(req._startRequest, req.url);
 		} catch (error) {
 			next(error);
 		}
@@ -87,14 +87,14 @@ module.exports = class TemplateController {
 	 */
 	async putControllerTemplate(req, res, next) {
 		try {
-			const trace = tracer.startTrace(new Error(), +req.query.trace);
+			const trace = logger.startTrace(new Error(), +req.query.trace);
 			const validateResult = validators.putValidatorinput(req);
 			const serviceResult = await services.putTemplateService(
 				validateResult
 			);
 			res.status(200).send(serviceResult);
-			tracer.endTrace(trace, +req.query.trace);
-			logger.endLog(req._startRequest);
+			logger.endTrace(trace, +req.query.trace);
+			logger.endLog(req._startRequest, req.url);
 		} catch (error) {
 			next(error);
 		}
@@ -108,14 +108,14 @@ module.exports = class TemplateController {
 	 */
 	async deleteControllerTemplate(req, res, next) {
 		try {
-			const trace = tracer.startTrace(new Error(), +req.query.trace);
+			const trace = logger.startTrace(new Error(), +req.query.trace);
 			const validateResult = validators.deleteValidatorinput(req);
 			const serviceResult = await services.deleteTemplateService(
 				validateResult
 			);
 			res.status(200).send(serviceResult);
-			tracer.endTrace(trace, +req.query.trace);
-			logger.endLog(req._startRequest);
+			logger.endTrace(trace, +req.query.trace);
+			logger.endLog(req._startRequest, req.url);
 		} catch (error) {
 			next(error);
 		}

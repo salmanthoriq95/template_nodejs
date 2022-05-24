@@ -24,9 +24,9 @@ loaderApp(app);
 app.listen(+config.app.PORT, () => {
 	console.log(
 		`${clc.bgBlue(
-			clc.white.bold(`[${config.app.HOST}] : ${config.app.PORT}`)
-		)}-${clc.bgBlue(new Date().toUTCString())} ${clc.whiteBright.bold(
-			"is Running"
+			`${clc.bold(`[INFO]`)} [${new Date().toLocaleString()}] [${clc.bold(
+				config.app.HOST
+			)} on port ${clc.bold(config.app.PORT)} is Running]`
 		)}`
 	);
 });

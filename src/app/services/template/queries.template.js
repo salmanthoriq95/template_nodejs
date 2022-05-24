@@ -1,8 +1,8 @@
 //@ts-check
 "use strict";
 
-const { Tracer } = require("../../utils");
-const tracer = new Tracer();
+const { Logger } = require("../../utils");
+const logger = new Logger();
 
 const connect = require("../../config/connection");
 
@@ -21,9 +21,9 @@ module.exports = class QueriesTemplate {
 	 * @param {number} traceIt
 	 */
 	async getAllQueryTemplate(traceIt) {
-		const trace = tracer.startTrace(new Error(), +traceIt);
+		const trace = logger.startTrace(new Error(), +traceIt);
 		const result = await connect("select * from news");
-		tracer.endTrace(trace, +traceIt);
+		logger.endTrace(trace, +traceIt);
 		return result;
 	}
 
@@ -33,9 +33,9 @@ module.exports = class QueriesTemplate {
 	 * @param {number} id
 	 */
 	async getByIdQueryTemplate(traceIt, id) {
-		const trace = tracer.startTrace(new Error(), +traceIt);
+		const trace = logger.startTrace(new Error(), +traceIt);
 		const result = await connect(`select * from news where id = ${id}`);
-		tracer.endTrace(trace, +traceIt);
+		logger.endTrace(trace, +traceIt);
 		return result[0];
 	}
 
@@ -45,7 +45,7 @@ module.exports = class QueriesTemplate {
 	 * @param {number} id
 	 */
 	async deleteQueryTemplate(traceIt, id) {
-		const trace = tracer.startTrace(new Error(), +traceIt);
+		const trace = logger.startTrace(new Error(), +traceIt);
 		const query = `
 			DELETE FROM
 				news
@@ -53,7 +53,7 @@ module.exports = class QueriesTemplate {
 				news.id = ${id}
 		`;
 		const result = await connect(query);
-		tracer.endTrace(trace, +traceIt);
+		logger.endTrace(trace, +traceIt);
 		return result[0];
 	}
 
@@ -64,7 +64,7 @@ module.exports = class QueriesTemplate {
 	 * @returns
 	 */
 	async postQueryTemplate(traceIt, body) {
-		const trace = tracer.startTrace(new Error(), +traceIt);
+		const trace = logger.startTrace(new Error(), +traceIt);
 		const query = `
 			INSERT INTO 
 				news
@@ -81,7 +81,7 @@ module.exports = class QueriesTemplate {
 			)
 		`;
 		const result = await connect(query);
-		tracer.endTrace(trace, +traceIt);
+		logger.endTrace(trace, +traceIt);
 		return result[0];
 	}
 
@@ -92,7 +92,7 @@ module.exports = class QueriesTemplate {
 	 * @returns
 	 */
 	async putQueryTemplate(traceIt, body) {
-		const trace = tracer.startTrace(new Error(), +traceIt);
+		const trace = logger.startTrace(new Error(), +traceIt);
 		const query = `
 			UPDATE 
 				news
@@ -104,7 +104,7 @@ module.exports = class QueriesTemplate {
 				news.id = ${body.id}
 		`;
 		const result = await connect(query);
-		tracer.endTrace(trace, +traceIt);
+		logger.endTrace(trace, +traceIt);
 		return result[0];
 	}
 };

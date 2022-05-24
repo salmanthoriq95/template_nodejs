@@ -3,8 +3,8 @@
 
 const Joi = require("joi");
 const HttpExpection = require("../../errors/HttpExpection");
-const { Tracer } = require("../../utils");
-const tracer = new Tracer();
+const { Logger } = require("../../utils");
+const logger = new Logger();
 /**
  * @typedef {import('./interfaces.template.js').IGetValidatorInputReturn} IGetValidatorInputReturn
  * @typedef {import('./interfaces.template.js').IGetByIdParamsValidatorInputReturn} IGetByIdParamsValidatorInputReturn
@@ -23,7 +23,7 @@ module.exports = class validatorsTemplate {
 	 * @returns {IGetValidatorInputReturn}
 	 */
 	getValidatorinput(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.query.trace);
+		const trace = logger.startTrace(new Error(), +payload.query.trace);
 		const schema = Joi.object({
 			debug: Joi.number().valid(1).optional(),
 			trace: Joi.number().valid(1).optional(),
@@ -41,7 +41,7 @@ module.exports = class validatorsTemplate {
 			});
 		}
 
-		tracer.endTrace(trace, +payload.query.trace);
+		logger.endTrace(trace, +payload.query.trace);
 		return validate.value;
 	}
 
@@ -51,7 +51,7 @@ module.exports = class validatorsTemplate {
 	 * @returns {IGetByIdParamsValidatorInputReturn}
 	 */
 	getByIdParamsValidatorinput(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.query.trace);
+		const trace = logger.startTrace(new Error(), +payload.query.trace);
 		const schema = Joi.object({
 			debug: Joi.number().valid(1).optional(),
 			trace: Joi.number().valid(1).optional(),
@@ -71,7 +71,7 @@ module.exports = class validatorsTemplate {
 			});
 		}
 
-		tracer.endTrace(trace, +payload.query.trace);
+		logger.endTrace(trace, +payload.query.trace);
 		return validate.value;
 	}
 
@@ -81,7 +81,7 @@ module.exports = class validatorsTemplate {
 	 * @returns {IGetByIdParamsValidatorInputReturn}
 	 */
 	deleteValidatorinput(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.query.trace);
+		const trace = logger.startTrace(new Error(), +payload.query.trace);
 		const schema = Joi.object({
 			debug: Joi.number().valid(1).optional(),
 			trace: Joi.number().valid(1).optional(),
@@ -101,7 +101,7 @@ module.exports = class validatorsTemplate {
 			});
 		}
 
-		tracer.endTrace(trace, +payload.query.trace);
+		logger.endTrace(trace, +payload.query.trace);
 		return validate.value;
 	}
 
@@ -111,7 +111,7 @@ module.exports = class validatorsTemplate {
 	 * @returns {IPostValidatorInputReturn}
 	 */
 	postValidatorinput(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.query.trace);
+		const trace = logger.startTrace(new Error(), +payload.query.trace);
 		const schema = Joi.object({
 			debug: Joi.number().valid(1).optional(),
 			trace: Joi.number().valid(1).optional(),
@@ -145,7 +145,7 @@ module.exports = class validatorsTemplate {
 			},
 		};
 
-		tracer.endTrace(trace, +payload.query.trace);
+		logger.endTrace(trace, +payload.query.trace);
 		return returnedDataFormat;
 	}
 
@@ -155,7 +155,7 @@ module.exports = class validatorsTemplate {
 	 * @returns {IPutValidatorInputReturn}
 	 */
 	putValidatorinput(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.query.trace);
+		const trace = logger.startTrace(new Error(), +payload.query.trace);
 		const schema = Joi.object({
 			debug: Joi.number().valid(1).optional(),
 			trace: Joi.number().valid(1).optional(),
@@ -192,7 +192,7 @@ module.exports = class validatorsTemplate {
 			},
 		};
 
-		tracer.endTrace(trace, +payload.query.trace);
+		logger.endTrace(trace, +payload.query.trace);
 		return returnedDataFormat;
 	}
 };

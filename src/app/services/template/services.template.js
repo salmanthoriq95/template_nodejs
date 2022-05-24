@@ -1,8 +1,8 @@
 // @ts-check
 "use strict";
 
-const { Tracer } = require("../../utils");
-const tracer = new Tracer();
+const { Logger } = require("../../utils");
+const logger = new Logger();
 
 const Queries = require("./queries.template");
 const query = new Queries();
@@ -27,9 +27,9 @@ module.exports = class TemplateServices {
 	 * @returns {Promise<*>}
 	 */
 	async getTemplateService(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.trace);
+		const trace = logger.startTrace(new Error(), +payload.trace);
 		const result = await query.getAllQueryTemplate(+payload.trace);
-		tracer.endTrace(trace, +payload.trace);
+		logger.endTrace(trace, +payload.trace);
 		return result;
 	}
 
@@ -39,12 +39,12 @@ module.exports = class TemplateServices {
 	 * @returns {Promise<*>}
 	 */
 	async getbyIdParamsTemplateService(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.trace);
+		const trace = logger.startTrace(new Error(), +payload.trace);
 		const result = await query.getByIdQueryTemplate(
 			+payload.trace,
 			payload.id
 		);
-		tracer.endTrace(trace, +payload.trace);
+		logger.endTrace(trace, +payload.trace);
 		return result;
 	}
 
@@ -54,7 +54,7 @@ module.exports = class TemplateServices {
 	 * @returns {Promise<{success: boolean}>}
 	 */
 	async deleteTemplateService(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.trace);
+		const trace = logger.startTrace(new Error(), +payload.trace);
 		const isIdExisted = await query.getByIdQueryTemplate(
 			+payload.trace,
 			payload.id
@@ -67,7 +67,7 @@ module.exports = class TemplateServices {
 			+payload.trace,
 			payload.id
 		);
-		tracer.endTrace(trace, +payload.trace);
+		logger.endTrace(trace, +payload.trace);
 		return { success: true };
 	}
 
@@ -77,12 +77,12 @@ module.exports = class TemplateServices {
 	 * @returns {Promise<{success:boolean}>}
 	 */
 	async postTemplateService(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.trace);
+		const trace = logger.startTrace(new Error(), +payload.trace);
 		const result = await query.postQueryTemplate(
 			+payload.trace,
 			payload.data
 		);
-		tracer.endTrace(trace, +payload.trace);
+		logger.endTrace(trace, +payload.trace);
 		return { success: true };
 	}
 
@@ -92,7 +92,7 @@ module.exports = class TemplateServices {
 	 * @returns {Promise<{success:boolean}>}
 	 */
 	async putTemplateService(payload) {
-		const trace = tracer.startTrace(new Error(), +payload.trace);
+		const trace = logger.startTrace(new Error(), +payload.trace);
 		const isIdExisted = await query.getByIdQueryTemplate(
 			+payload.trace,
 			payload.data.id
@@ -106,7 +106,7 @@ module.exports = class TemplateServices {
 			+payload.trace,
 			payload.data
 		);
-		tracer.endTrace(trace, +payload.trace);
+		logger.endTrace(trace, +payload.trace);
 		return { success: true };
 	}
 };
