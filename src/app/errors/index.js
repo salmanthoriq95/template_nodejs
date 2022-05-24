@@ -32,7 +32,6 @@ module.exports = (error, req, res, next) => {
 		data: error.data,
 	};
 
-	// TODO : console name that fn broken
 	logger.errorLog(
 		req.url,
 		req.method,
@@ -42,7 +41,7 @@ module.exports = (error, req, res, next) => {
 	);
 
 	if (req.query.debug === "1") errorResponse.stack = error.stack;
-
+	if (req.query.trace === "1") logger.fatalLog(error);
 	if (error.name === "HttpExpection") {
 		return res.status(error.statusCode).json(errorResponse);
 	}

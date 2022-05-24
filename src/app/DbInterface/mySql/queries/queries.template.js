@@ -1,14 +1,14 @@
 //@ts-check
 "use strict";
 
-const { Logger } = require("../../utils");
+const { Logger } = require("../../../utils");
 const logger = new Logger();
 
-const connect = require("../../config/connection");
+const connect = require("../mysql.config");
 
 /**
- * @typedef {import('./interfaces.template').IPostBodyFormatInput} IPostBodyFormatInput
- * @typedef {import('./interfaces.template').IPutBodyFormatInput} IPutBodyFormatInput
+ * @typedef {import('../../../utils/globalInterfaces').IPostBodyFormatInput} IPostBodyFormatInput
+ * @typedef {import('../../../utils/globalInterfaces').IPutBodyFormatInput} IPutBodyFormatInput
  */
 
 /**

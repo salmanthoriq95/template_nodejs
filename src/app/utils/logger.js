@@ -1,3 +1,4 @@
+// NOTE learn how to refac this
 //@ts-check
 "use strict";
 
@@ -84,11 +85,11 @@ const _PrintConsole = (
 module.exports = class Debugger {
 	/**
 	 * console the error
-	 * @param {*} endPoint
-	 * @param {*} [method]
-	 * @param {*} [userAgent]
-	 * @param {*} [ipAddress]
-	 * @param {*} [reqData]
+	 * @param {string} endPoint
+	 * @param {string} [method]
+	 * @param {string} [userAgent]
+	 * @param {string} [ipAddress]
+	 * @param {object} [reqData]
 	 */
 	errorLog(endPoint, method, userAgent, ipAddress, reqData) {
 		_PrintConsole(
@@ -99,6 +100,55 @@ module.exports = class Debugger {
 			userAgent,
 			ipAddress,
 			reqData
+		);
+	}
+
+	/**
+	 * console the fatal error
+	 * @param {Error} error
+	 */
+	fatalLog(error) {
+		// Get info error
+		const trace = error.stack;
+		// split into some array, it can use for another needs
+		const traceArr = trace.split("\n");
+		const traceFnInfo = [];
+
+		// filter stack
+		traceArr.forEach((value, index) => {
+			// get that no "node_module" inside
+			if (!value.match("node_modules") && index !== 0)
+				traceFnInfo.push(value.trim());
+		});
+
+		// filter fn name, file name, and line
+		const errorInfo = { message: error.message, stack: [] };
+		traceFnInfo.forEach((e) => {
+			const val = e.split(" ");
+			// get the function name
+			const fnName = val[1];
+			// get file name
+			let fileDir = val[2];
+			fileDir = fileDir.replace(/\(|\)/g, "");
+			const fileDirArr = fileDir.split(".js");
+			// get the line number
+			const lineNumber = fileDirArr[1].slice(1);
+			const stacked = {
+				functionName: fnName,
+				fileName: fileDir,
+				line: lineNumber,
+			};
+			errorInfo.stack.push(stacked);
+		});
+
+		_PrintConsole(
+			"fatal",
+			new Date().toLocaleString(),
+			error.name,
+			"",
+			"",
+			"",
+			errorInfo
 		);
 	}
 
@@ -145,7 +195,6 @@ module.exports = class Debugger {
 	 * @returns {void}
 	 */
 	endLog(startTime, endPoint) {
-		// TODO : refactoring for better log template
 		if (process.env.APP_HOST !== "PROD") {
 			const executeTime = (window.performance.now() - startTime) / 1000;
 			_PrintConsole(
@@ -194,6 +243,7 @@ module.exports = class Debugger {
 
 		// formatting return
 		const returnedData = {
+			status: "start",
 			fileName: fileName,
 			line: lineNumber,
 			functionName: fnName,
@@ -211,12 +261,6 @@ module.exports = class Debugger {
 				"",
 				returnedData
 			);
-
-			// console.log(
-			// 	`${clc.bold.cyan("[START]")} ${clc.bold(
-			// 		fnName
-			// 	)} - Details : ${JSON.stringify(returnedData)}`
-			// );
 		}
 		return returnedData;
 	}
@@ -230,6 +274,7 @@ module.exports = class Debugger {
 	endTrace(traceData, consoleIt) {
 		if (process.env.APP_HOST !== "PROD" && +consoleIt === 1) {
 			const traceResult = {
+				status: "end",
 				functionName: traceData.functionName,
 				fileName: traceData.fileName,
 				line: traceData.line,
@@ -245,11 +290,6 @@ module.exports = class Debugger {
 				"",
 				traceResult
 			);
-			// console.log(
-			// 	`${clc.bold.cyan("[END]")} ${clc.bold(
-			// 		traceResult.functionName
-			// 	)} - Details : ${JSON.stringify(traceResult)}`
-			// );
 		}
 		return;
 	}

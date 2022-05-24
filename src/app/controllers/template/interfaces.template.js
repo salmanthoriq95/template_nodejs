@@ -2,6 +2,11 @@
 "use strict";
 
 /**
+ * @typedef {import('../../utils/globalInterfaces').IPostBodyFormatInput} IPostBodyFormatInput
+ * @typedef {import('../../utils/globalInterfaces').IPutBodyFormatInput} IPutBodyFormatInput
+ */
+
+/**
  * @typedef {object} IGetValidatorInputReturn
  * @property {number} debug
  * @property {number} trace
@@ -26,21 +31,6 @@
  * @property {number} debug
  * @property {number} trace
  * @property {IPutBodyFormatInput} data
- */
-
-/**
- * @typedef {object} IPostBodyFormatInput
- * @property {string} title
- * @property {string} content
- * @property {string} author
- */
-
-/**
- * @typedef {object} IPutBodyFormatInput
- * @property {number} id
- * @property {string} title
- * @property {string} content
- * @property {string} author
  */
 
 /**

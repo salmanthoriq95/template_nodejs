@@ -42,7 +42,6 @@ module.exports = (app) => {
 		 * @param {Promise<any>} p
 		 */
 		(reason, p) => {
-			console.log("masuk unhandled rejection");
 			console.log(p);
 			throw reason;
 		}
@@ -55,8 +54,7 @@ module.exports = (app) => {
 		 * @param {Error} error
 		 */
 		(error) => {
-			console.log("masuyk ke fatal");
-			console.log(error);
+			logger.fatalLog(error);
 			process.exit(1);
 		}
 	);
