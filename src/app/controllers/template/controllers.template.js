@@ -4,8 +4,6 @@
 
 const { Request, Response, NextFunction } = require("express");
 const { Logger } = require("../../utils");
-const ServiceTemplate = require("./services.template");
-const ValidatorsTemplate = require("./validators.template");
 
 const {
 	getServicesTemplate,
@@ -17,12 +15,12 @@ const {
 	putTemplateService,
 	inputPutValidatorTemplate,
 	OutputPutValidatorTemplate,
+	deleteTemplateServices,
+	inputDeleteValidatorTemplate,
+	outputDeleteValidatorTemplate,
 } = require("./template.services");
 
 const logger = new Logger();
-
-const services = new ServiceTemplate();
-const validators = new ValidatorsTemplate();
 
 /**
  * @class
@@ -150,10 +148,20 @@ module.exports = class TemplateController {
 	async deleteControllerTemplate(req, res, next) {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
-			const validateResult = validators.deleteValidatorinput(req);
-			const serviceResult = await services.deleteTemplateService(
-				validateResult
-			);
+
+			const validateResult =
+				inputDeleteValidatorTemplate.deleteValidatorinput(req);
+			const serviceResult =
+				await deleteTemplateServices.deleteTemplateService(
+					validateResult
+				);
+			const formatReturn =
+				outputDeleteValidatorTemplate.deleteValidatorOutput(
+					serviceResult.success,
+					+req.query.trace,
+					serviceResult.message
+				);
+
 			res.status(200).send(serviceResult);
 			logger.endTrace(trace, +req.query.trace);
 			logger.endLog(req._startRequest, req.url);

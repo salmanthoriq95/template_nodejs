@@ -13,6 +13,10 @@ const PutTemplateService = require("./put.template.services/put.services.templat
 const InputPutValidatorTemplate = require("./put.template.services/put.template.validators/input.put.validators.template");
 const OutputPutValidatorTemplate = require("./put.template.services/put.template.validators/output.put.validators.template");
 
+const DeleteTemplateServices = require("./delete.template.services/delete.services.template");
+const InputDeleteValidatorTemplate = require("./delete.template.services/delete.template.validators/input.delete.validators.template");
+const OutputDeleteValidatorTemplate = require("./delete.template.services/delete.template.validators/output.delete.validators.template");
+
 module.exports = {
 	// GET validators and Services
 	getServicesTemplate: new GetServicesTemplate(),
@@ -28,4 +32,9 @@ module.exports = {
 	putTemplateService: new PutTemplateService(),
 	inputPutValidatorTemplate: new InputPutValidatorTemplate(),
 	OutputPutValidatorTemplate: new OutputPutValidatorTemplate(),
+
+	// DELETE validators and services
+	deleteTemplateServices: new DeleteTemplateServices(),
+	inputDeleteValidatorTemplate: new InputDeleteValidatorTemplate(),
+	outputDeleteValidatorTemplate: new OutputDeleteValidatorTemplate(),
 };
