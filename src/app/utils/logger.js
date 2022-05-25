@@ -135,7 +135,8 @@ module.exports = class Debugger {
 			const lineNumber = fileDirArr[1].slice(1);
 			const stacked = {
 				functionName: fnName,
-				fileName: fileDir,
+				// @ts-ignore
+				fileName: fileDir.replace(ROOTDIR, ""),
 				line: lineNumber,
 			};
 			errorInfo.stack.push(stacked);
@@ -244,7 +245,8 @@ module.exports = class Debugger {
 		// formatting return
 		const returnedData = {
 			status: "start",
-			fileName: fileName,
+			// @ts-ignore
+			fileName: fileName.replace(ROOTDIR, ""),
 			line: lineNumber,
 			functionName: fnName,
 			startCalled: calledFnStartTime,
@@ -276,7 +278,8 @@ module.exports = class Debugger {
 			const traceResult = {
 				status: "end",
 				functionName: traceData.functionName,
-				fileName: traceData.fileName,
+				// @ts-ignoretionName,
+				fileName: traceData.fileName.replace(ROOTDIR, ""),
 				line: traceData.line,
 				executionTime:
 					(window.performance.now() - traceData.startCalled) / 1000,

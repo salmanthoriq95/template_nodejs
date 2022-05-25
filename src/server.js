@@ -18,6 +18,8 @@ const loaderApp = require("./app");
 
 const app = express();
 
+global.ROOTDIR = __dirname.replace("src", "");
+
 // Load App
 loaderApp(app);
 
