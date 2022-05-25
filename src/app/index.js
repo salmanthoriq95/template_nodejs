@@ -58,4 +58,10 @@ module.exports = (app) => {
 			process.exit(1);
 		}
 	);
+
+	const gracefulShutdownHandler = (signal) => {
+		process.exit();
+	};
+	process.on("SIGINT", gracefulShutdownHandler);
+	process.on("SIGTERM", gracefulShutdownHandler);
 };

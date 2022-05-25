@@ -1,4 +1,3 @@
-// TODO : refac this laterS
 //@ts-check
 "use strict";
 

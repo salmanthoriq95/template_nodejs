@@ -26,25 +26,6 @@ module.exports = class validatorsTemplate {
 	getValidatorOutput(datas, traceIt, message) {
 		const trace = logger.startTrace(new Error(), +traceIt);
 
-		const schema = Joi.object({
-			id: Joi.number(),
-			title: Joi.string(),
-			content: Joi.string(),
-			author: Joi.string(),
-		});
-
-		datas.forEach((data) => {
-			const validate = schema.validate({
-				id: data.id,
-				title: data.title,
-				content: data.content,
-				author: data.author,
-			});
-
-			if (validate.error)
-				throw new HttpExpection(400, { message: "Validation Error!" });
-		});
-
 		logger.endTrace(trace, +traceIt);
 		return {
 			success: true,

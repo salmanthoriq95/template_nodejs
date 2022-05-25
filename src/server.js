@@ -18,17 +18,21 @@ const loaderApp = require("./app");
 
 const app = express();
 
-global.ROOTDIR = __dirname.replace("src", "");
-
 // Load App
 loaderApp(app);
 
 app.listen(+config.app.PORT, () => {
-	console.log(
-		`${clc.bgBlue(
-			`${clc.bold(`[INFO]`)} [${new Date().toLocaleString()}] [${clc.bold(
-				config.app.HOST
-			)} on port ${clc.bold(config.app.PORT)} is Running]`
-		)}`
-	);
+	if (process.env.APP_HOST !== "TEST") {
+		console.log(
+			`${clc.bgBlue(
+				`${clc.bold(
+					`[INFO]`
+				)} [${new Date().toLocaleString()}] [${clc.bold(
+					config.app.HOST
+				)} on port ${clc.bold(config.app.PORT)} is Running]`
+			)}`
+		);
+	}
 });
+
+module.exports = app;

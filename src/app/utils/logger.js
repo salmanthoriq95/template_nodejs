@@ -6,6 +6,7 @@ const { Request, Response, NextFunction } = require("express");
 const clc = require("cli-color");
 const { JSDOM } = require("jsdom");
 const { window } = new JSDOM();
+const path = require("path");
 
 /**
  * @typedef ITraceData
@@ -92,15 +93,17 @@ module.exports = class Debugger {
 	 * @param {object} [reqData]
 	 */
 	errorLog(endPoint, method, userAgent, ipAddress, reqData) {
-		_PrintConsole(
-			"error",
-			new Date().toLocaleString(),
-			endPoint,
-			method,
-			userAgent,
-			ipAddress,
-			reqData
-		);
+		if (process.env.APP_HOST !== "TEST") {
+			_PrintConsole(
+				"error",
+				new Date().toLocaleString(),
+				endPoint,
+				method,
+				userAgent,
+				ipAddress,
+				reqData
+			);
+		}
 	}
 
 	/**
@@ -136,21 +139,26 @@ module.exports = class Debugger {
 			const stacked = {
 				functionName: fnName,
 				// @ts-ignore
-				fileName: fileDir.replace(ROOTDIR, ""),
+				fileName: fileDir.replace(
+					path.resolve(__dirname, "../../../"),
+					""
+				),
 				line: lineNumber,
 			};
 			errorInfo.stack.push(stacked);
 		});
 
-		_PrintConsole(
-			"fatal",
-			new Date().toLocaleString(),
-			error.name,
-			"",
-			"",
-			"",
-			errorInfo
-		);
+		if (process.env.APP_HOST !== "TEST") {
+			_PrintConsole(
+				"fatal",
+				new Date().toLocaleString(),
+				error.name,
+				"",
+				"",
+				"",
+				errorInfo
+			);
+		}
 	}
 
 	/**
@@ -175,15 +183,17 @@ module.exports = class Debugger {
 
 		for (const key in request) if (!request[key]) delete request[key];
 
-		_PrintConsole(
-			"INFO",
-			timestamp,
-			req.url,
-			req.method,
-			req.headers["user-agent"],
-			req.ip,
-			request
-		);
+		if (process.env.APP_HOST !== "TEST") {
+			_PrintConsole(
+				"INFO",
+				timestamp,
+				req.url,
+				req.method,
+				req.headers["user-agent"],
+				req.ip,
+				request
+			);
+		}
 
 		req._startRequest = window.performance.now();
 		return next();
@@ -198,15 +208,17 @@ module.exports = class Debugger {
 	endLog(startTime, endPoint) {
 		if (process.env.APP_HOST !== "PROD") {
 			const executeTime = (window.performance.now() - startTime) / 1000;
-			_PrintConsole(
-				"trace",
-				new Date().toLocaleString(),
-				endPoint,
-				"",
-				"",
-				"",
-				{ executionTime: `${executeTime}s` }
-			);
+			if (process.env.APP_HOST !== "TEST") {
+				_PrintConsole(
+					"trace",
+					new Date().toLocaleString(),
+					endPoint,
+					"",
+					"",
+					"",
+					{ executionTime: `${executeTime}s` }
+				);
+			}
 		}
 		return;
 	}
@@ -246,7 +258,10 @@ module.exports = class Debugger {
 		const returnedData = {
 			status: "start",
 			// @ts-ignore
-			fileName: fileName.replace(ROOTDIR, ""),
+			fileName: fileName.replace(
+				path.resolve(__dirname, "../../../"),
+				""
+			),
 			line: lineNumber,
 			functionName: fnName,
 			startCalled: calledFnStartTime,
@@ -254,15 +269,17 @@ module.exports = class Debugger {
 
 		//return
 		if (process.env.APP_HOST !== "PROD" && +consoleIt === 1) {
-			_PrintConsole(
-				"trace",
-				new Date().toLocaleString(),
-				returnedData.functionName,
-				"",
-				"",
-				"",
-				returnedData
-			);
+			if (process.env.APP_HOST !== "TEST") {
+				_PrintConsole(
+					"trace",
+					new Date().toLocaleString(),
+					returnedData.functionName,
+					"",
+					"",
+					"",
+					returnedData
+				);
+			}
 		}
 		return returnedData;
 	}
@@ -279,20 +296,25 @@ module.exports = class Debugger {
 				status: "end",
 				functionName: traceData.functionName,
 				// @ts-ignoretionName,
-				fileName: traceData.fileName.replace(ROOTDIR, ""),
+				fileName: traceData.fileName.replace(
+					path.resolve(__dirname, "../../../"),
+					""
+				),
 				line: traceData.line,
 				executionTime:
 					(window.performance.now() - traceData.startCalled) / 1000,
 			};
-			_PrintConsole(
-				"trace",
-				new Date().toLocaleString(),
-				traceResult.functionName,
-				"",
-				"",
-				"",
-				traceResult
-			);
+			if (process.env.APP_HOST !== "TEST") {
+				_PrintConsole(
+					"trace",
+					new Date().toLocaleString(),
+					traceResult.functionName,
+					"",
+					"",
+					"",
+					traceResult
+				);
+			}
 		}
 		return;
 	}
