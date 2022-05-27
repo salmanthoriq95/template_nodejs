@@ -9,6 +9,7 @@
 		"del:mysql": "rm -r -f src/app/db.Interface/mySql/",
 		"del:knex": "rm -r -f src/app/db.Interface/knex/",
 		"db:dev:uninstall": "npm uninstall mongoose mysql2 knex",
+		"db:dev:install": "npm i -D mongoose mysql2 knex",
 		"install:dev:mysql": "npm run del:node_modules&&npm run del:mongo&&npm run del:knex&&npm run db:dev:uninstall&&npm i&&npm i mysql2",
 		"install:dev:mongo": "npm run del:node_modules&&npm run del:mysql&&npm run del:knex&&npm run db:dev:uninstall&&npm i&&npm i mongoose",
 		"install:dev:knex": "npm run del:node_modules&&npm run del:mongo&&npm run del:mysql&&npm run db:dev:uninstall&&&&npm i&&npm i mysql2 knex",
