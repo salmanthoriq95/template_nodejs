@@ -4,7 +4,7 @@
 const { Logger } = require("../../../../utils");
 const logger = new Logger();
 
-const Queries = require("../../../../DbInterface/mySql/queries/queries.template");
+const Queries = require("../../../../db.Interface/mySql/queries/queries.template");
 const query = new Queries();
 
 const HttpExpection = require("../../../../errors/HttpExpection");
@@ -29,6 +29,7 @@ module.exports = class PostTemplateServices {
 			+payload.trace,
 			payload.data
 		);
+		console.log("the result", result);
 		logger.endTrace(trace, +payload.trace);
 		return { success: true, message: "Success add a data" };
 	}

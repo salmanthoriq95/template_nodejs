@@ -4,7 +4,7 @@
 const { Logger } = require("../../../../utils");
 const logger = new Logger();
 
-const Queries = require("../../../../DbInterface/mySql/queries/queries.template");
+const Queries = require("../../../../db.Interface/mySql/queries/queries.template");
 const query = new Queries();
 
 const HttpExpection = require("../../../../errors/HttpExpection");

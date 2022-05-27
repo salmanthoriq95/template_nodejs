@@ -8,7 +8,7 @@ const path = require("path");
 const app = require("express")();
 
 jest.mock("../../../DbInterface/mySql/queries/queries.template", () =>
-	require("../../../DbInterface/mySql/mock/queries.mock")
+	require("../../../db.Interface/mySql/mock/queries.mock")
 );
 
 describe("HTTP Request get /", () => {

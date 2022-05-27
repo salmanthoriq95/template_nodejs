@@ -59,6 +59,7 @@ module.exports = (app) => {
 		}
 	);
 
+	// closing the app gracefully
 	const gracefulShutdownHandler = (signal) => {
 		process.exit();
 	};
