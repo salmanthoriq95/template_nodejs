@@ -4,6 +4,14 @@
 	"description": "this is backend template using :",
 	"main": "src/server.js",
 	"scripts": {
+		"del:node_modules": "rm -r -f node_modules/",
+		"del:mongo": "rm -r -f src/app/db.Interface/mongodb/",
+		"del:mysql": "rm -r -f src/app/db.Interface/mySql/",
+		"del:knex": "rm -r -f src/app/db.Interface/knex/",
+		"db:dev:uninstall": "npm uninstall mongoose mysql2 knex",
+		"install:dev:mysql": "npm run del:node_modules&&npm run del:mongo&&npm run del:knex&&npm run db:dev:uninstall&&npm i&&npm i mysql2",
+		"install:dev:mongo": "npm run del:node_modules&&npm run del:mysql&&npm run del:knex&&npm run db:dev:uninstall&&npm i&&npm i mongoose",
+		"install:dev:knex": "npm run del:node_modules&&npm run del:mongo&&npm run del:mysql&&npm run db:dev:uninstall&&&&npm i&&npm i mysql2 knex",
 		"test": "jest",
 		"start:dev:win": "set ENV_NAME=dev&&nodemon src/server",
 		"start:dev:linux": "APP_ENV=dev&&nodemon src/server",
@@ -34,6 +42,7 @@
 		"eslint": "^8.14.0",
 		"eslint-config-prettier": "^8.5.0",
 		"jsdom": "^19.0.0",
+		"knex": "^2.1.0",
 		"mongoose": "^6.3.4",
 		"mysql2": "^2.3.3",
 		"prettier": "^2.6.2"
