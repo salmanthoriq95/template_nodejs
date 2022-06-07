@@ -1,0 +1,16 @@
+// @ts-check
+"use strict";
+
+module.exports = {
+	app: {
+		HOST: process.env.APP_HOST || "127.0.0.1",
+		PORT: process.env.APP_PORT || 3000,
+	},
+	db: {
+		HOST: process.env.DB_HOST || "127.0.0.1",
+		DATABASE: process.env.DB_NAME || "testdb",
+		PORT: process.env.DB_PORT || 3306,
+		USER: process.env.DB_USER || "root",
+		PASSWORD: process.env.DB_PASS || "",
+	},
+};
