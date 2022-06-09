@@ -1,6 +1,12 @@
 # NODE JS TEMPLATE
 
-<img src="https://img.shields.io/badge/author-salman-yellow">
+![Twitter Follow](https://img.shields.io/twitter/follow/far_is_man?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/salmanthoriq95/template_nodejs?style=flat-square)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/salmanthoriq95/template_nodejs?style=flat-square)
+![GitHub top language](https://img.shields.io/github/languages/top/salmanthoriq95/template_nodejs?style=flat-square)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/salmanthoriq95/template_nodejs?style=flat-square)
+![GitHub](https://img.shields.io/github/license/salmanthoriq95/template_nodejs?style=flat-square)
+![Node](https://img.shields.io/badge/nodejs-%3E%3D16.5.5-brightgreen?style=flat-square)
 
 ## Description
 
@@ -31,4 +37,3 @@ this is backend template using :
 9. User Documentation : Postman
 10. Another Dependecies :
     - cli-color
-
