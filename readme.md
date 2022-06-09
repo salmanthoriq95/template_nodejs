@@ -1,4 +1,20 @@
-# TEMPLATE
+# NODE JS TEMPLATE
+
+<img src="https://img.shields.io/badge/author-salman-yellow">
+
+## Description
+
+dont forget add badges
+
+## Table of Content
+
+## Installation
+
+## API
+
+## Credits
+
+## License
 
 ## SPECIFICATION
 
