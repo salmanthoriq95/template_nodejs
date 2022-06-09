@@ -1,12 +1,8 @@
-# NODE JS TEMPLATE
+# NODE JS TEMPLATE [![GitHub package.json version](https://img.shields.io/github/package-json/v/salmanthoriq95/template_nodejs?style=for-the-badge)](https://github.com/salmanthoriq95/template_nodejs)
 
-![Twitter Follow](https://img.shields.io/twitter/follow/far_is_man?style=flat-square)
-![GitHub last commit](https://img.shields.io/github/last-commit/salmanthoriq95/template_nodejs?style=flat-square)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/salmanthoriq95/template_nodejs?style=flat-square)
-![GitHub top language](https://img.shields.io/github/languages/top/salmanthoriq95/template_nodejs?style=flat-square)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/salmanthoriq95/template_nodejs?style=flat-square)
-![GitHub](https://img.shields.io/github/license/salmanthoriq95/template_nodejs?style=flat-square)
-![Node](https://img.shields.io/badge/nodejs-%3E%3D16.5.5-brightgreen?style=flat-square)
+[![Twitter Follow](https://img.shields.io/twitter/follow/far_is_man?style=flat-square)](https://twitter.com/far_is_man)
+[![GitHub last commit](https://img.shields.io/github/last-commit/salmanthoriq95/template_nodejs?style=flat-square)](https://github.com/salmanthoriq95/template_nodejs/graphs/commit-activity)
+[![Node](https://img.shields.io/badge/nodejs-%3E%3D16.5.5-brightgreen?style=flat-square)](https://nodejs.org/en/)
 
 ## Description
 
