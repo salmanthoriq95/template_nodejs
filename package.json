@@ -4,7 +4,6 @@
 	"description": "this is backend template using :",
 	"main": "src/server.js",
 	"scripts": {
-		"help": "sh helper.sh",
 		"del:node_modules": "rm -r -f node_modules/",
 		"del:mongo": "rm -r -f src/app/db.Interface/mongodb/",
 		"del:mysql": "rm -r -f src/app/db.Interface/mySql/",
