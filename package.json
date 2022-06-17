@@ -38,10 +38,11 @@
 	},
 	"homepage": "https://gitlab.com/salmanthoriq95/template#readme",
 	"compilerOptions": {
-		"module": "commonjs",
-		"target": "es6"
-	  },
-	"exclude": ["node_modules"],
+		"module": "commonjs"
+	},
+	"exclude": [
+		"node_modules"
+	],
 	"dependencies": {
 		"cli-color": "^2.0.2",
 		"cors": "^2.8.5",
