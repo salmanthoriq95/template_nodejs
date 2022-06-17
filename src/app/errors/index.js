@@ -19,10 +19,9 @@ const logger = new Logger();
  * @param {*} error
  * @param {Request} req
  * @param {Response} res
- * @param {NextFunction} next
  * @returns {*}
  */
-module.exports = (error, req, res, next) => {
+module.exports = (error, req, res) => {
 	/**
 	 * @type {IErrorResponse}
 	 */
@@ -44,8 +43,8 @@ module.exports = (error, req, res, next) => {
 		req.query.debug === "1"
 			? errorResponse
 			: {
-					name: "Internal Server Error",
-					message: "Please contact administrator",
-			  }
+				name: "Internal Server Error",
+				message: "Please contact administrator",
+			}
 	);
 };
