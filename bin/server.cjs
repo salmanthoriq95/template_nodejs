@@ -13,8 +13,8 @@ const envName = !process.env.ENV_NAME ? "PROD" : `${process.env.ENV_NAME}`;
 const dotenv = require("dotenv");
 dotenv.config({ path: path.resolve(__dirname, `../env/${envName}.env`) });
 
-const config = require("./app/config");
-const loaderApp = require("./app");
+const config = require("./app/config/index.cjs");
+const loaderApp = require("./app/index.cjs");
 
 const app = express();
 
@@ -23,13 +23,7 @@ loaderApp(app);
 
 app.listen(+config.app.PORT, () => {
 	if (process.env.APP_HOST !== "TEST") {
-		console.log(
-			`${clc.bgBlue(
-				`${clc.bold("[INFO]")} [${new Date().toLocaleString()}] [${clc.bold(
-					config.app.HOST
-				)} on port ${clc.bold(config.app.PORT)} is Running]`
-			)}`
-		);
+		console.log(`${clc.bgBlue(`${clc.bold("[INFO]")} [${new Date().toLocaleString()}] [${clc.bold(config.app.HOST)} on port ${clc.bold(config.app.PORT)} is Running]`)}`);
 	}
 });
 

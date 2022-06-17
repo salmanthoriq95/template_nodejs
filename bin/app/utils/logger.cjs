@@ -2,7 +2,6 @@
 //@ts-check
 "use strict";
 
-const { Request, Response, NextFunction } = require("express");
 const clc = require("cli-color");
 const { JSDOM } = require("jsdom");
 const { window } = new JSDOM();
@@ -48,21 +47,21 @@ const _PrintConsole = (consoleType, time, endPoint, method, userAgent, ipAddress
 	const MSG = `${clc.bold(`[${consoleType.toUpperCase()}]`)} [${time}] [${reqInfo}] ${_reqData}`;
 
 	switch (consoleType.toLowerCase()) {
-	case "info":
-		console.log(INFO(MSG));
-		break;
-	case "fatal":
-	case "error":
-		console.log(ERROR(MSG));
-		break;
-	case "warn":
-	case "debug":
-		console.log(WARN(MSG));
-		break;
-	case "trace":
-	default:
-		console.log(TRACE(MSG));
-		break;
+		case "info":
+			console.log(INFO(MSG));
+			break;
+		case "fatal":
+		case "error":
+			console.log(ERROR(MSG));
+			break;
+		case "warn":
+		case "debug":
+			console.log(WARN(MSG));
+			break;
+		case "trace":
+		default:
+			console.log(TRACE(MSG));
+			break;
 	}
 };
 
@@ -129,32 +128,32 @@ module.exports = class Debugger {
 
 	/**
 	 * create a log everytime user hit api
-	 * @param {Request} req
-	 * @param {Response} res
-	 * @param {NextFunction} next
+	 * @param {any} req
+	 * @param {any} res
+	 * @param {any} next
 	 * @returns {void}
 	 */
 	log(req, res, next) {
 		const timestamp = new Date().toLocaleString();
 
-		const request = {
+		const any = {
 			body: Object.entries(req.body).length !== 0 ? req.body : undefined,
 			params: Object.entries(req.params).length !== 0 ? req.params : undefined,
 			query: Object.entries(req.query).length !== 0 ? req.query : undefined,
 		};
 
-		for (const key in request) if (!request[key]) delete request[key];
+		for (const key in any) if (!any[key]) delete any[key];
 
 		if (process.env.APP_HOST !== "TEST") {
-			_PrintConsole("INFO", timestamp, req.url, req.method, req.headers["user-agent"], req.ip, request);
+			_PrintConsole("INFO", timestamp, req.url, req.method, req.headers["user-agent"], req.ip, any);
 		}
 
-		req._startRequest = window.performance.now();
+		req._startany = window.performance.now();
 		return next();
 	}
 
 	/**
-	 * end of request logs
+	 * end of any logs
 	 * @param {number} startTime
 	 * @param {string} endPoint
 	 * @returns {void}
@@ -214,15 +213,7 @@ module.exports = class Debugger {
 		//return
 		if (process.env.APP_HOST !== "PROD" && +consoleIt === 1) {
 			if (process.env.APP_HOST !== "TEST") {
-				_PrintConsole(
-					"trace",
-					new Date().toLocaleString(),
-					returnedData.functionName,
-					"",
-					"",
-					"",
-					returnedData
-				);
+				_PrintConsole("trace", new Date().toLocaleString(), returnedData.functionName, "", "", "", returnedData);
 			}
 		}
 		return returnedData;

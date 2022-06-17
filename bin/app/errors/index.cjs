@@ -2,7 +2,7 @@
 "use strict";
 
 const { Request, Response } = require("express");
-const { Logger } = require("../utils");
+const Logger = require("../utils/logger.cjs");
 
 const logger = new Logger();
 /**

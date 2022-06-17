@@ -1,18 +1,17 @@
 // @ts-check
 "use strict";
 
-const { Application } = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const errorHandler = require("./errors");
-const routes = require("./routes");
-const Logger = require("./utils/logger");
+const errorHandler = require("./errors/index.cjs");
+const routes = require("./routes/index.cjs");
+const Logger = require("./utils/logger.cjs");
 
 const logger = new Logger();
 
 /**
  * default export express modules and middleware
- * @param {Application} app
+ * @param {any} app
  * @returns {void}
  */
 module.exports = (app) => {
