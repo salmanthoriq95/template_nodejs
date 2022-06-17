@@ -29,6 +29,7 @@
 		"type": "git",
 		"url": "git+https://gitlab.com/salmanthoriq95/template.git"
 	},
+	"type": "commonjs",
 	"keywords": [],
 	"author": "MIT",
 	"license": "ISC",
