@@ -3,6 +3,7 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/far_is_man?style=flat-square)](https://twitter.com/far_is_man)
 [![GitHub last commit](https://img.shields.io/github/last-commit/salmanthoriq95/template_nodejs?style=flat-square)](https://github.com/salmanthoriq95/template_nodejs/graphs/commit-activity)
 [![Node](https://img.shields.io/badge/nodejs-%3E%3D16.5.5-brightgreen?style=flat-square&logo=JavaScript)](https://nodejs.org/en/)
+[![CodeFactor](https://www.codefactor.io/repository/github/salmanthoriq95/templates/badge/node-cjs)](https://www.codefactor.io/repository/github/salmanthoriq95/templates/overview/node-cjs)
 
 ---
 
