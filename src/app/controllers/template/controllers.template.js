@@ -36,15 +36,9 @@ module.exports = class TemplateController {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
 
-			const validateResult =
-				inputGetValidatorTemplate.getValidatorinput(req);
-			const serviceResult = await getServicesTemplate.getTemplateService(
-				validateResult
-			);
-			const formatReturn = OutputGetValidatorTemplate.getValidatorOutput(
-				serviceResult,
-				+req.query.trace
-			);
+			const validateResult = inputGetValidatorTemplate.getValidatorinput(req);
+			const serviceResult = await getServicesTemplate.getTemplateService(validateResult);
+			const formatReturn = OutputGetValidatorTemplate.getValidatorOutput(serviceResult, +req.query.trace);
 
 			res.status(200).send(formatReturn);
 
@@ -64,17 +58,12 @@ module.exports = class TemplateController {
 	async getByParamsIdTemplate(req, res, next) {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
-			const validateResult =
-				inputGetValidatorTemplate.getByIdParamsValidatorinput(req);
-			const serviceResult =
-				await getServicesTemplate.getbyIdParamsTemplateService(
-					validateResult
-				);
-			const formatReturn =
-				OutputGetValidatorTemplate.getByIdParamsValidatorOutput(
-					serviceResult,
-					+req.query.trace
-				);
+			const validateResult = inputGetValidatorTemplate.getByIdParamsValidatorinput(req);
+			const serviceResult = await getServicesTemplate.getbyIdParamsTemplateService(validateResult);
+			const formatReturn = OutputGetValidatorTemplate.getByIdParamsValidatorOutput(
+				serviceResult,
+				+req.query.trace
+			);
 			res.status(200).send(formatReturn);
 			logger.endTrace(trace, +req.query.trace);
 			logger.endLog(req._startRequest, req.url);
@@ -93,10 +82,8 @@ module.exports = class TemplateController {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
 
-			const validateResult =
-				inputPostValidatorTemplate.postValidatorinput(req);
-			const serviceResult =
-				await postTemplateServices.postTemplateService(validateResult);
+			const validateResult = inputPostValidatorTemplate.postValidatorinput(req);
+			const serviceResult = await postTemplateServices.postTemplateService(validateResult);
 			const formatReturn = OutputPostValidatorTemplate.postValidatorinput(
 				serviceResult.success,
 				+req.query.trace,
@@ -120,11 +107,8 @@ module.exports = class TemplateController {
 	async putControllerTemplate(req, res, next) {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
-			const validateResult =
-				inputPutValidatorTemplate.putValidatorinput(req);
-			const serviceResult = await putTemplateService.putTemplateService(
-				validateResult
-			);
+			const validateResult = inputPutValidatorTemplate.putValidatorinput(req);
+			const serviceResult = await putTemplateService.putTemplateService(validateResult);
 			const formatReturn = OutputPutValidatorTemplate.putValidatorinput(
 				serviceResult.success,
 				+req.query.trace,
@@ -148,18 +132,13 @@ module.exports = class TemplateController {
 		try {
 			const trace = logger.startTrace(new Error(), +req.query.trace);
 
-			const validateResult =
-				inputDeleteValidatorTemplate.deleteValidatorinput(req);
-			const serviceResult =
-				await deleteTemplateServices.deleteTemplateService(
-					validateResult
-				);
-			const formatReturn =
-				outputDeleteValidatorTemplate.deleteValidatorOutput(
-					serviceResult.success,
-					+req.query.trace,
-					serviceResult.message
-				);
+			const validateResult = inputDeleteValidatorTemplate.deleteValidatorinput(req);
+			const serviceResult = await deleteTemplateServices.deleteTemplateService(validateResult);
+			const formatReturn = outputDeleteValidatorTemplate.deleteValidatorOutput(
+				serviceResult.success,
+				+req.query.trace,
+				serviceResult.message
+			);
 
 			res.status(200).send(serviceResult);
 			logger.endTrace(trace, +req.query.trace);
@@ -169,4 +148,3 @@ module.exports = class TemplateController {
 		}
 	}
 };
-

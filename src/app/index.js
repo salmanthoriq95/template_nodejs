@@ -60,7 +60,7 @@ module.exports = (app) => {
 	);
 
 	// closing the app gracefully
-	const gracefulShutdownHandler = (signal) => {
+	const gracefulShutdownHandler = () => {
 		process.exit();
 	};
 	process.on("SIGINT", gracefulShutdownHandler);

@@ -26,7 +26,7 @@ app.listen(+config.app.PORT, () => {
 		console.log(
 			`${clc.bgBlue(
 				`${clc.bold(
-					`[INFO]`
+					"[INFO]"
 				)} [${new Date().toLocaleString()}] [${clc.bold(
 					config.app.HOST
 				)} on port ${clc.bold(config.app.PORT)} is Running]`

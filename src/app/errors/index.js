@@ -32,13 +32,7 @@ module.exports = (error, req, res, next) => {
 		data: error.data,
 	};
 
-	logger.errorLog(
-		req.url,
-		req.method,
-		req.headers["user-agent"],
-		req.ip,
-		errorResponse
-	);
+	logger.errorLog(req.url, req.method, req.headers["user-agent"], req.ip, errorResponse);
 
 	if (req.query.debug === "1") errorResponse.stack = error.stack;
 	if (req.query.trace === "1") logger.fatalLog(error);
@@ -55,4 +49,3 @@ module.exports = (error, req, res, next) => {
 			  }
 	);
 };
-

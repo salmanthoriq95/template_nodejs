@@ -29,15 +29,7 @@ const path = require("path");
  * @param {object} [reqData] data that passed by user
  * @returns {void}
  */
-const _PrintConsole = (
-	consoleType,
-	time,
-	endPoint,
-	method,
-	userAgent,
-	ipAddress,
-	reqData
-) => {
+const _PrintConsole = (consoleType, time, endPoint, method, userAgent, ipAddress, reqData) => {
 	const INFO = clc.bgBlue.white;
 	const ERROR = clc.bgRed.white;
 	const WARN = clc.bgYellow.black;
@@ -46,19 +38,14 @@ const _PrintConsole = (
 	const _method = method ? method : "";
 	const _userAgent = userAgent ? userAgent : "";
 	const _ipAddress = ipAddress ? ipAddress : "";
-	const _reqData =
-		Object.entries(reqData).length !== 0
-			? `[${clc.italic(JSON.stringify(reqData))}]`
-			: "";
+	const _reqData = Object.entries(reqData).length !== 0 ? `[${clc.italic(JSON.stringify(reqData))}]` : "";
 
 	let reqInfo = `${endPoint}`;
 	if (_method !== "") reqInfo = `${clc.bold(_method)} | ` + reqInfo;
 	if (_userAgent !== "") reqInfo = reqInfo + ` | ${_userAgent}`;
 	if (_ipAddress !== "") reqInfo = reqInfo + ` | ${_ipAddress}`;
 
-	const MSG = `${clc.bold(
-		`[${consoleType.toUpperCase()}]`
-	)} [${time}] [${reqInfo}] ${_reqData}`;
+	const MSG = `${clc.bold(`[${consoleType.toUpperCase()}]`)} [${time}] [${reqInfo}] ${_reqData}`;
 
 	switch (consoleType.toLowerCase()) {
 		case "info":
@@ -94,15 +81,7 @@ module.exports = class Debugger {
 	 */
 	errorLog(endPoint, method, userAgent, ipAddress, reqData) {
 		if (process.env.APP_HOST !== "TEST") {
-			_PrintConsole(
-				"error",
-				new Date().toLocaleString(),
-				endPoint,
-				method,
-				userAgent,
-				ipAddress,
-				reqData
-			);
+			_PrintConsole("error", new Date().toLocaleString(), endPoint, method, userAgent, ipAddress, reqData);
 		}
 	}
 
@@ -120,8 +99,7 @@ module.exports = class Debugger {
 		// filter stack
 		traceArr.forEach((value, index) => {
 			// get that no "node_module" inside
-			if (!value.match("node_modules") && index !== 0)
-				traceFnInfo.push(value.trim());
+			if (!value.match("node_modules") && index !== 0) traceFnInfo.push(value.trim());
 		});
 
 		// filter fn name, file name, and line
@@ -139,25 +117,14 @@ module.exports = class Debugger {
 			const stacked = {
 				functionName: fnName,
 				// @ts-ignore
-				fileName: fileDir.replace(
-					path.resolve(__dirname, "../../../"),
-					""
-				),
+				fileName: fileDir.replace(path.resolve(__dirname, "../../../"), ""),
 				line: lineNumber,
 			};
 			errorInfo.stack.push(stacked);
 		});
 
 		if (process.env.APP_HOST !== "TEST") {
-			_PrintConsole(
-				"fatal",
-				new Date().toLocaleString(),
-				error.name,
-				"",
-				"",
-				"",
-				errorInfo
-			);
+			_PrintConsole("fatal", new Date().toLocaleString(), error.name, "", "", "", errorInfo);
 		}
 	}
 
@@ -173,26 +140,14 @@ module.exports = class Debugger {
 
 		const request = {
 			body: Object.entries(req.body).length !== 0 ? req.body : undefined,
-			params:
-				Object.entries(req.params).length !== 0
-					? req.params
-					: undefined,
-			query:
-				Object.entries(req.query).length !== 0 ? req.query : undefined,
+			params: Object.entries(req.params).length !== 0 ? req.params : undefined,
+			query: Object.entries(req.query).length !== 0 ? req.query : undefined,
 		};
 
 		for (const key in request) if (!request[key]) delete request[key];
 
 		if (process.env.APP_HOST !== "TEST") {
-			_PrintConsole(
-				"INFO",
-				timestamp,
-				req.url,
-				req.method,
-				req.headers["user-agent"],
-				req.ip,
-				request
-			);
+			_PrintConsole("INFO", timestamp, req.url, req.method, req.headers["user-agent"], req.ip, request);
 		}
 
 		req._startRequest = window.performance.now();
@@ -209,15 +164,9 @@ module.exports = class Debugger {
 		if (process.env.APP_HOST !== "PROD") {
 			const executeTime = (window.performance.now() - startTime) / 1000;
 			if (process.env.APP_HOST !== "TEST") {
-				_PrintConsole(
-					"trace",
-					new Date().toLocaleString(),
-					endPoint,
-					"",
-					"",
-					"",
-					{ executionTime: `${executeTime}s` }
-				);
+				_PrintConsole("trace", new Date().toLocaleString(), endPoint, "", "", "", {
+					executionTime: `${executeTime}s`,
+				});
 			}
 		}
 		return;
@@ -258,10 +207,7 @@ module.exports = class Debugger {
 		const returnedData = {
 			status: "start",
 			// @ts-ignore
-			fileName: fileName.replace(
-				path.resolve(__dirname, "../../../"),
-				""
-			),
+			fileName: fileName.replace(path.resolve(__dirname, "../../../"), ""),
 			line: lineNumber,
 			functionName: fnName,
 			startCalled: calledFnStartTime,
@@ -296,24 +242,12 @@ module.exports = class Debugger {
 				status: "end",
 				functionName: traceData.functionName,
 				// @ts-ignoretionName,
-				fileName: traceData.fileName.replace(
-					path.resolve(__dirname, "../../../"),
-					""
-				),
+				fileName: traceData.fileName.replace(path.resolve(__dirname, "../../../"), ""),
 				line: traceData.line,
-				executionTime:
-					(window.performance.now() - traceData.startCalled) / 1000,
+				executionTime: (window.performance.now() - traceData.startCalled) / 1000,
 			};
 			if (process.env.APP_HOST !== "TEST") {
-				_PrintConsole(
-					"trace",
-					new Date().toLocaleString(),
-					traceResult.functionName,
-					"",
-					"",
-					"",
-					traceResult
-				);
+				_PrintConsole("trace", new Date().toLocaleString(), traceResult.functionName, "", "", "", traceResult);
 			}
 		}
 		return;

@@ -11,4 +11,3 @@ router.delete("/:id", templateController.deleteControllerTemplate);
 router.put("/:id", templateController.putControllerTemplate);
 
 module.exports = router;
-

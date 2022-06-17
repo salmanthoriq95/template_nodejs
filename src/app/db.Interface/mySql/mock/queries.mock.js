@@ -29,8 +29,7 @@ module.exports = class QueriesMockMysql {
 			{
 				id: 3,
 				title: "Machine Learning from scratch",
-				content:
-					"Bare bones implementations of some of the foundational models and algorithms.",
+				content: "Bare bones implementations of some of the foundational models and algorithms.",
 				author: "Jo",
 			},
 		];
