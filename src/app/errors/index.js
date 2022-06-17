@@ -1,7 +1,7 @@
 // @ts-check
 "use strict";
 
-const { NextFunction, Request, Response } = require("express");
+const { Request, Response } = require("express");
 const { Logger } = require("../utils");
 
 const logger = new Logger();
@@ -39,12 +39,5 @@ module.exports = (error, req, res) => {
 		return res.status(error.statusCode).json(errorResponse);
 	}
 
-	return res.status(500).json(
-		req.query.debug === "1"
-			? errorResponse
-			: {
-				name: "Internal Server Error",
-				message: "Please contact administrator",
-			}
-	);
+	return res.status(500).json(req.query.debug === "1" ? errorResponse : { name: "Internal Server Error", message: "Please contact administrator" });
 };

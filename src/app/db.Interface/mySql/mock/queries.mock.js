@@ -11,19 +11,18 @@ module.exports = class QueriesMockMysql {
 	}
 
 	getAllQueryTemplate(traceIt) {
+		traceIt;
 		return [
 			{
 				id: 1,
 				title: "Pacific Northwest high-speed rail line",
-				content:
-					"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.",
+				content: "Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.",
 				author: "Greg",
 			},
 			{
 				id: 2,
 				title: "Hitting the beach was voted the best part of life in the region",
-				content:
-					"Exploring tracks and trails was second most popular, followed by visiting the shops and then traveling to local parks.",
+				content: "Exploring tracks and trails was second most popular, followed by visiting the shops and then traveling to local parks.",
 				author: "Ethan",
 			},
 			{
@@ -36,6 +35,7 @@ module.exports = class QueriesMockMysql {
 	}
 
 	getByIdQueryTemplate(traceIt, id) {
+		traceIt;
 		if (id > 5) {
 			return undefined;
 		}
@@ -43,11 +43,13 @@ module.exports = class QueriesMockMysql {
 		return {
 			id,
 			title: "Pacific Northwest high-speed rail line",
-			content:
-				"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.",
+			content: "Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.",
 			author: "Greg",
 		};
 	}
 
-	deleteQueryTemplate(traceIt, id) {}
+	deleteQueryTemplate(traceIt, id) {
+		traceIt;
+		id;
+	}
 };

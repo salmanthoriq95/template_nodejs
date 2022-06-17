@@ -7,8 +7,6 @@ const logger = new Logger();
 const Queries = require("../../../../db.Interface/mySql/queries/queries.template");
 const query = new Queries();
 
-const HttpExpection = require("../../../../errors/HttpExpection");
-
 /**
  * @typedef {import('./post.interfaces.template/post.interfaces.template').IPostValidatorInputReturn} IPostValidatorInputReturn
  */
@@ -25,10 +23,7 @@ module.exports = class PostTemplateServices {
 	 */
 	async postTemplateService(payload) {
 		const trace = logger.startTrace(new Error(), +payload.trace);
-		const result = await query.postQueryTemplate(
-			+payload.trace,
-			payload.data
-		);
+		const result = await query.postQueryTemplate(+payload.trace, payload.data);
 		console.log("the result", result);
 		logger.endTrace(trace, +payload.trace);
 		return { success: true, message: "Success add a data" };

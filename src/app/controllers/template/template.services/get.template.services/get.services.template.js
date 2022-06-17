@@ -7,8 +7,6 @@ const logger = new Logger();
 const Queries = require("../../../../db.Interface/mySql/queries/queries.template");
 const query = new Queries();
 
-const HttpExpection = require("../../../../errors/HttpExpection");
-
 /**
  * @typedef {import('./get.interfaces.template/get.interfaces.template').IGetValidatorInputReturn} IGetValidatorInputReturn
  * @typedef {import('./get.interfaces.template/get.interfaces.template').IGetByIdParamsValidatorInputReturn} IGetByIdParamsValidatorInputReturn
@@ -40,10 +38,7 @@ module.exports = class GetTemplateServices {
 	 */
 	async getbyIdParamsTemplateService(payload) {
 		const trace = logger.startTrace(new Error(), +payload.trace);
-		const result = await query.getByIdQueryTemplate(
-			+payload.trace,
-			payload.id
-		);
+		const result = await query.getByIdQueryTemplate(+payload.trace, payload.id);
 		console.log(result);
 		logger.endTrace(trace, +payload.trace);
 		return result;

@@ -1,8 +1,6 @@
 // @ts-check
 "use strict";
 
-const Joi = require("joi");
-const HttpExpection = require("../../../../../errors/HttpExpection");
 const { Logger } = require("../../../../../utils");
 const logger = new Logger();
 /**

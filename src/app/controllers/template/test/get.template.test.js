@@ -7,9 +7,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const app = require("express")();
 
-jest.mock("../../../db.Interface/mySql/queries/queries.template", () =>
-	require("../../../db.Interface/mySql/mock/queries.mock")
-);
+jest.mock("../../../db.Interface/mySql/queries/queries.template", () => require("../../../db.Interface/mySql/mock/queries.mock"));
 
 describe("HTTP Request get /", () => {
 	beforeAll(() => {

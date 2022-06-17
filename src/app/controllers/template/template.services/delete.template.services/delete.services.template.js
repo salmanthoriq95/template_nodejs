@@ -25,19 +25,13 @@ module.exports = class DeleteTemplateServices {
 	 */
 	async deleteTemplateService(payload) {
 		const trace = logger.startTrace(new Error(), +payload.trace);
-		const isIdExisted = await query.getByIdQueryTemplate(
-			+payload.trace,
-			payload.id
-		);
+		const isIdExisted = await query.getByIdQueryTemplate(+payload.trace, payload.id);
 
 		if (!isIdExisted || Object.keys(isIdExisted).length === 0) {
 			throw new HttpExpection(404, { message: "Data not Found!" });
 		}
 
-		const result = await query.deleteQueryTemplate(
-			+payload.trace,
-			payload.id
-		);
+		await query.deleteQueryTemplate(+payload.trace, payload.id);
 		logger.endTrace(trace, +payload.trace);
 		return { success: true, message: "Success delete a data" };
 	}

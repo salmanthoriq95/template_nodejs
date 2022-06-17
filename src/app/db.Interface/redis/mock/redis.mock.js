@@ -2,7 +2,7 @@
 "use strict";
 
 module.exports = class QueriesMockMysql {
-	getDataByKeyName(key) {
+	getDataByKeyName() {
 		return JSON.stringify({ startAttemp: 1654238692500, attempCount: 1, nextAttemp: 0 });
 	}
 

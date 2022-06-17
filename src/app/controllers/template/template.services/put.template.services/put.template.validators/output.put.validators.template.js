@@ -1,7 +1,6 @@
 // @ts-check
 "use strict";
 
-const Joi = require("joi");
 const { Logger } = require("../../../../../utils");
 const logger = new Logger();
 /**
