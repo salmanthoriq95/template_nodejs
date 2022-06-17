@@ -48,21 +48,21 @@ const _PrintConsole = (consoleType, time, endPoint, method, userAgent, ipAddress
 	const MSG = `${clc.bold(`[${consoleType.toUpperCase()}]`)} [${time}] [${reqInfo}] ${_reqData}`;
 
 	switch (consoleType.toLowerCase()) {
-		case "info":
-			console.log(INFO(MSG));
-			break;
-		case "fatal":
-		case "error":
-			console.log(ERROR(MSG));
-			break;
-		case "warn":
-		case "debug":
-			console.log(WARN(MSG));
-			break;
-		case "trace":
-		default:
-			console.log(TRACE(MSG));
-			break;
+	case "info":
+		console.log(INFO(MSG));
+		break;
+	case "fatal":
+	case "error":
+		console.log(ERROR(MSG));
+		break;
+	case "warn":
+	case "debug":
+		console.log(WARN(MSG));
+		break;
+	case "trace":
+	default:
+		console.log(TRACE(MSG));
+		break;
 	}
 };
 

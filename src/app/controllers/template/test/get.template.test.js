@@ -14,7 +14,7 @@ jest.mock("../../../db.Interface/mySql/queries/queries.template", () =>
 describe("HTTP Request get /", () => {
 	beforeAll(() => {
 		dotenv.config({
-			path: path.resolve(__dirname, `../../../../../env/test.env`),
+			path: path.resolve(__dirname, "../../../../../env/test.env"),
 		});
 		server(app);
 	});

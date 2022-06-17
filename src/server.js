@@ -25,9 +25,7 @@ app.listen(+config.app.PORT, () => {
 	if (process.env.APP_HOST !== "TEST") {
 		console.log(
 			`${clc.bgBlue(
-				`${clc.bold(
-					"[INFO]"
-				)} [${new Date().toLocaleString()}] [${clc.bold(
+				`${clc.bold("[INFO]")} [${new Date().toLocaleString()}] [${clc.bold(
 					config.app.HOST
 				)} on port ${clc.bold(config.app.PORT)} is Running]`
 			)}`
