@@ -1,9 +1,9 @@
-# NODE JS TEMPLATE [![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/salmanthoriq95/templates/node-cjs?style=for-the-badge)](https://github.com/salmanthoriq95/templates/tree/node-cjs)
+# NODE JS TEMPLATE [![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/salmanthoriq95/templates/node-esm?style=for-the-badge)](https://github.com/salmanthoriq95/templates/tree/node-esm)
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/far_is_man?style=flat-square)](https://twitter.com/far_is_man)
-[![GitHub last commit](https://img.shields.io/github/last-commit/salmanthoriq95/template_nodejs?style=flat-square)](https://github.com/salmanthoriq95/template_nodejs/graphs/commit-activity)
+[![GitHub last commit](https://img.shields.io/github/last-commit/salmanthoriq95/templates/node-esm?style=flat-square)](https://github.com/salmanthoriq95/templates/node-esm/graphs/commit-activity)
 [![Node](https://img.shields.io/badge/nodejs-%3E%3D16.5.5-brightgreen?style=flat-square&logo=Node.js&logoColor=white)](https://nodejs.org/en/)
-[![CodeFactor](https://www.codefactor.io/repository/github/salmanthoriq95/templates/badge?style=flat-square)](https://www.codefactor.io/repository/github/salmanthoriq95/templates)
+[![CodeFactor](https://www.codefactor.io/repository/github/salmanthoriq95/templates/badge/node-esm?style=flat-square)](https://www.codefactor.io/repository/github/salmanthoriq95/templates/overview/node-esm)
 
 ---
 
