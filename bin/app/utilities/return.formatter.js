@@ -4,7 +4,7 @@
 /**
  *
  * @param {*} payload
- * @returns
+ * @returns {any}
  */
 module.exports = (payload) => {
 	return payload;
