@@ -1,0 +1,616 @@
+{
+	"info": {
+		"_postman_id": "f181570a-1d32-434c-955f-1a6ff8fbff65",
+		"name": "Template HTTP Requests",
+		"description": "ID:\n\nIni adalah template HTTP Request yang digunakan untuk mengakeses template API yang sudah saya buat. Template API yang sudah saya buat bisa dilihat di Github atau Gitlab saya.\n\nDari semua hasil HTTP Response disini bisa digunakan untuk dokumentasi API yang nanti akan dibuat.\n\nSemoga bisa membantu.\n\nEN:\n\nThis is an HTTP Request template for consume API template I created. You can see my API Template on my Github or Gitlab repo.\n\nFrom all HTTP Response, you can created documentation for others to consume your API next time. Hope can help you.\n\nThanks.\n\nRepositories:\n\nGithub : github.com/salmanthoriq95/templates  \nGitlab : gitlab.com/salmanthoriq95/template",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15075608"
+	},
+	"item": [
+		{
+			"name": "Root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:{{dev}}/as",
+					"host": [
+						"localhost"
+					],
+					"port": "{{dev}}",
+					"path": [
+						"as"
+					],
+					"query": [
+						{
+							"key": "debug",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{dev}}/",
+							"host": [
+								"localhost"
+							],
+							"port": "{{dev}}",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1525"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5f5-Hi5TFp+sKTLVPbqhkn5BnQcpeiI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jun 2022 21:25:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"success get data\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Pacific Northwest high-speed rail line\",\n            \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\n            \"author\": \"Greg\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Hitting the beach was voted the best part of life in the region\",\n            \"content\": \"Exploring tracks and trails was second most popular, followed by visiting the shops and then traveling to local parks.\",\n            \"author\": \"Ethan\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Machine Learning from scratch\",\n            \"content\": \"Bare bones implementations of some of the foundational models and algorithms.\",\n            \"author\": \"Jo\"\n        },\n        {\n            \"id\": 7,\n            \"title\": \"Lorem Ipsum\",\n            \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\",\n            \"author\": \"salman\"\n        },\n        {\n            \"id\": 8,\n            \"title\": \"hello world\",\n            \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\n            \"author\": \"salman\"\n        },\n        {\n            \"id\": 10,\n            \"title\": \"hello world\",\n            \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\n            \"author\": null\n        }\n    ]\n}"
+				},
+				{
+					"name": "400",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{dev}}/as",
+							"host": [
+								"localhost"
+							],
+							"port": "{{dev}}",
+							"path": [
+								"as"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "72"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"48-K+Jl2qmx1VY6BAuhM+FflNIdiEM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jun 2022 21:26:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"HttpExpection\",\n    \"message\": \"Fail to Validate\",\n    \"data\": {\n        \"id\": \"as\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Root",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": null,\r\n    \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\r\n    \"author\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:{{dev}}/",
+					"host": [
+						"localhost"
+					],
+					"port": "{{dev}}",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"hello world\",\r\n    \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\r\n    \"author\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{dev}}/",
+							"host": [
+								"localhost"
+							],
+							"port": "{{dev}}",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-XyzCJ4qsj6pidajh+8YoGx0Ypio\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jun 2022 21:27:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"success add data\"\n}"
+				},
+				{
+					"name": "400",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": null,\r\n    \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\r\n    \"author\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{dev}}/",
+							"host": [
+								"localhost"
+							],
+							"port": "{{dev}}",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "224"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e0-NPzW/vjZWQdP9FPiQeXwfyxuolc\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jun 2022 21:28:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"HttpExpection\",\n    \"message\": \"Fail to Validate\",\n    \"data\": {\n        \"title\": null,\n        \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\n        \"author\": \"\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Root",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": null,\r\n    \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\r\n    \"author\": \"salman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:{{dev}}/8",
+					"host": [
+						"localhost"
+					],
+					"port": "{{dev}}",
+					"path": [
+						"8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"hello world\",\r\n    \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\r\n    \"author\": \"salman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{dev}}/8",
+							"host": [
+								"localhost"
+							],
+							"port": "{{dev}}",
+							"path": [
+								"8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "46"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2e-eH8iBrgCB+Bem90KjAPYwnb2CY8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jun 2022 21:28:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"success edit data\"\n}"
+				},
+				{
+					"name": "400",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": null,\r\n    \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\r\n    \"author\": \"salman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:{{dev}}/8",
+							"host": [
+								"localhost"
+							],
+							"port": "{{dev}}",
+							"path": [
+								"8"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "239"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ef-YY8l/8PsCjjKFsi2Zr000ZUUab0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jun 2022 21:28:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"HttpExpection\",\n    \"message\": \"Fail to Validate\",\n    \"data\": {\n        \"title\": null,\n        \"content\": \"Currently there are only a few options for traveling the 140 miles between Seattle and Vancouver and none of them are ideal.\",\n        \"author\": \"salman\",\n        \"id\": \"8\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Root",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:{{dev}}/asd",
+					"host": [
+						"localhost"
+					],
+					"port": "{{dev}}",
+					"path": [
+						"asd"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{dev}}/10",
+							"host": [
+								"localhost"
+							],
+							"port": "{{dev}}",
+							"path": [
+								"10"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"30-xpHirGweQsdJ2SxV1UvVS7KSjaE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jun 2022 21:29:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"success delete data\"\n}"
+				},
+				{
+					"name": "400",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:{{dev}}/asd",
+							"host": [
+								"localhost"
+							],
+							"port": "{{dev}}",
+							"path": [
+								"asd"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "73"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"49-FutFTJyP3VXGiXP+xsm80JvnDhc\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Jun 2022 21:29:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"HttpExpection\",\n    \"message\": \"Fail to Validate\",\n    \"data\": {\n        \"id\": \"asd\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
