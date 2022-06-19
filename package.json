@@ -1,6 +1,6 @@
 {
 	"name": "cjs",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"main": "bin/server.js",
 	"scripts": {
@@ -48,3 +48,4 @@
 		"mysql2": "^2.3.3"
 	}
 }
+
