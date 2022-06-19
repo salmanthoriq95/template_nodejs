@@ -37,10 +37,6 @@ loaderApp(app);
 // start the server
 app.listen(+config.app.PORT, () => {
 	console.clear();
-	// check connection to mysql
-	if (process.env.DB?.toLocaleLowerCase() === "mysql") {
-		require("./app/models/mysql/config").checkConnection;
-	}
 	// Run server
 	if (process.env.APP_HOST !== "TEST") {
 		console.log(`[INFO] [${new Date().toLocaleString()}] [${config.app.HOST} on port ${config.app.PORT} is Running]`);

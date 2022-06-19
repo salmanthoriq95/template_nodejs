@@ -64,7 +64,7 @@ const ErrorHandle = (error, req, res, next) => {
 		message: error.message,
 		data: error.data,
 	};
-	console.log("masuk ke sini ga");
+
 	// logger.errorLog(req.url, req.method, req.headers["user-agent"], req.ip, errorResponse);
 
 	if (req.query.debug === "1") errorResponse.stack = error.stack;
