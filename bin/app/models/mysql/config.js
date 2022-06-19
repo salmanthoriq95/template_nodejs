@@ -1,5 +1,4 @@
 // @ts-check
-"use strict";
 
 /**
  * @namespace MysqlConfiguration
@@ -25,14 +24,14 @@ const { RowDataPacket, OkPacket, ResultSetHeader } = require("mysql2");
  * @returns {Promise<RowDataPacket[] | RowDataPacket[][] | OkPacket | OkPacket[] | ResultSetHeader>}
  */
 module.exports.execQuery = async (queries) => {
-	const connection = mysql.createPool({
-		// port: process.env.DB_PORT,
-		host: process.env.DB_HOST,
-		user: process.env.DB_USER,
-		password: process.env.DB_PASS,
-		database: process.env.DB_NAME,
-		multipleStatements: true,
-	});
-	const [rows] = await connection.query(queries);
-	return rows;
+  const connection = mysql.createPool({
+    // port: process.env.DB_PORT,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    multipleStatements: true,
+  });
+  const [rows] = await connection.query(queries);
+  return rows;
 };

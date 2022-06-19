@@ -1,5 +1,4 @@
 // @ts-check
-"use strict";
 
 /**
  * @namespace ErrorHandler
@@ -56,24 +55,31 @@ const { Request, Response, NextFunction } = require("express");
  */
 // eslint-disable-next-line no-unused-vars
 const ErrorHandle = (error, req, res, next) => {
-	/**
-	 * @type {IErrorResponse}
-	 */
-	const errorResponse = {
-		name: error.name,
-		message: error.message,
-		data: error.data,
-	};
+  /**
+   * @type {IErrorResponse}
+   */
+  const errorResponse = {
+    name: error.name,
+    message: error.message,
+    data: error.data,
+  };
 
-	// logger.errorLog(req.url, req.method, req.headers["user-agent"], req.ip, errorResponse);
+  // logger.errorLog(req.url, req.method, req.headers["user-agent"], req.ip, errorResponse);
 
-	if (req.query.debug === "1") errorResponse.stack = error.stack;
-	// if (req.query.trace === "1") logger.fatalLog(error);
-	if (error.name === "HttpExpection") {
-		return res.status(+error.statusCode).json(errorResponse);
-	}
+  if (req.query.debug === "1") errorResponse.stack = error.stack;
+  // if (req.query.trace === "1") logger.fatalLog(error);
+  if (error.name === "HttpExpection") {
+    return res.status(+error.statusCode).json(errorResponse);
+  }
 
-	return res.status(500).json(req.query.debug === "1" ? errorResponse : { name: "Internal Server Error", message: "Please contact administrator" });
+  return res.status(500).json(
+    req.query.debug === "1"
+      ? errorResponse
+      : {
+          name: "Internal Server Error",
+          message: "Please contact administrator",
+        },
+  );
 };
 
 module.exports = ErrorHandle;

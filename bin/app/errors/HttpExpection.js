@@ -1,5 +1,4 @@
 // @ts-check
-"use strict";
 
 /**
  * ID: </br>
@@ -16,21 +15,21 @@
  * @inner
  */
 class HttpExpection extends Error {
-	/**
-	 * @constructor
-	 * @param {number} statusCode
-	 * @param {object} httpData
-	 * @param {string} httpData.message
-	 * @param {any} [httpData.data=undefined]
-	 * @inheritdoc
-	 */
-	constructor(statusCode, httpData) {
-		super();
-		this.name = "HttpExpection";
-		this.statusCode /** @type {number} */ = statusCode;
-		this.data /** @type {any[]} */ = httpData.data || undefined;
-		this.message = httpData.message;
-	}
+  /**
+   * @constructor
+   * @param {number} statusCode
+   * @param {object} httpData
+   * @param {string} httpData.message
+   * @param {any} [httpData.data=undefined]
+   * @inheritdoc
+   */
+  constructor(statusCode, httpData) {
+    super();
+    this.name = "HttpExpection";
+    this.statusCode /** @type {number} */ = statusCode;
+    this.data /** @type {any[]} */ = httpData.data || undefined;
+    this.message = httpData.message;
+  }
 }
 
 module.exports = HttpExpection;

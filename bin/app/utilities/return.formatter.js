@@ -1,5 +1,4 @@
 // @ts-check
-"use strict";
 
 /**
  *
@@ -9,10 +8,8 @@
  * @param {string} [payload.message]
  * @returns {object}
  */
-module.exports = (payload) => {
-	return {
-		success: payload.success,
-		message: payload.message,
-		data: payload.data,
-	};
-};
+module.exports = (payload) => ({
+  success: payload.success,
+  message: payload.message,
+  data: payload.data,
+});

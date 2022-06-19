@@ -1,5 +1,4 @@
 // @ts-check
-"use strict";
 
 /**
  * @namespace __MainServe__
@@ -22,13 +21,16 @@ const express = require("express");
 
 // set up enverionment variables
 const path = require("path");
+
 const envName = !process.env.ENV_NAME ? "PROD" : `${process.env.ENV_NAME}`;
 const dotenv = require("dotenv");
+
 dotenv.config({ path: path.resolve(__dirname, `../env/${envName}.env`) });
 
 // impert middlewares
-const config = require("./app/config/");
-const loaderApp = require("./app/");
+const config = require("./app/config");
+const loaderApp = require("./app");
+
 const app = express();
 
 // load the app
@@ -36,11 +38,15 @@ loaderApp(app);
 
 // start the server
 app.listen(+config.app.PORT, () => {
-	console.clear();
-	// Run server
-	if (process.env.APP_HOST !== "TEST") {
-		console.log(`[INFO] [${new Date().toLocaleString()}] [${config.app.HOST} on port ${config.app.PORT} is Running]`);
-	}
+  console.clear();
+  // Run server
+  if (process.env.APP_HOST !== "TEST") {
+    console.log(
+      `[INFO] [${new Date().toLocaleString()}] [${config.app.HOST} on port ${
+        config.app.PORT
+      } is Running]`,
+    );
+  }
 });
 
 module.exports = app;

@@ -1,5 +1,4 @@
 // @ts-check
-"use strict";
 
 /**
  * @class
@@ -9,23 +8,23 @@
  * EN:
  */
 class NewsTable {
-	/**
-	 * ID:</br>
-	 * </br></br>
-	 * EN:
-	 * @constructor
-	 */
-	constructor() {
-		this.PROPERTIES = {
-			TABLE_NAME: "news",
-			COLOUMNS: {
-				ID: "id",
-				TITLE: "title",
-				CONTENT: "content",
-				AUTHOR: "author",
-			},
-		};
-	}
+  /**
+   * ID:</br>
+   * </br></br>
+   * EN:
+   * @constructor
+   */
+  constructor() {
+    this.PROPERTIES = {
+      TABLE_NAME: "news",
+      COLOUMNS: {
+        ID: "id",
+        TITLE: "title",
+        CONTENT: "content",
+        AUTHOR: "author",
+      },
+    };
+  }
 }
 
 const newsTable = new NewsTable();

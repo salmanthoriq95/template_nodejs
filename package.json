@@ -43,6 +43,9 @@
 	"devDependencies": {
 		"clean-jsdoc-theme": "^4.0.7",
 		"eslint": "^8.18.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-prettier": "^4.0.0",
 		"jsdoc": "^3.6.10",
 		"knex": "^2.1.0",
 		"mysql2": "^2.3.3"

@@ -1,12 +1,11 @@
 // @ts-check
-"use strict";
 
 // eslint-disable-next-line no-unused-vars
 const { Application } = require("express");
 
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const errorHandler = require("./errors/");
+const errorHandler = require("./errors");
 const routes = require("./routes");
 
 // const Logger = require("./utils/logger");
@@ -28,52 +27,52 @@ const routes = require("./routes");
  * @returns {void}
  */
 const loaderApp = (app) => {
-	//  set up middleware which will run before every request
-	app.use(cors());
-	app.use(bodyParser.json());
-	app.use(bodyParser.urlencoded({ extended: false }));
-	// app.use(logger.log);
+  //  set up middleware which will run before every request
+  app.use(cors());
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  // app.use(logger.log);
 
-	// Routing
-	Object.keys(routes).forEach((key) => app.use("/", routes[key]));
+  // Routing
+  Object.keys(routes).forEach((key) => app.use("/", routes[key]));
 
-	// Error Handling
-	app.use(errorHandler);
-	// Unhandling Rejection Expection
-	process.on(
-		"unhandledRejection",
-		/**
-		 * ID: semua error yang tidak di tangkap ErrorHandler akan mengarah kesini </br>
-		 * EN: all unhandle using ErrorHandler error will go here
-		 * @param {string} reason
-		 * @param {Promise<any>} p
-		 */
-		(reason, p) => {
-			console.log(p);
-			throw reason;
-		}
-	);
-	process.on(
-		"uncaughtException",
-		/**
-		 * ID: semua error yang fatal akan menuju kesini, dan server akan menutup paksa </br>
-		 * EN: all fatal error might go here, and the server will force close
-		 * @param {Error} error
-		 */
-		(error) => {
-			console.log(error);
-			process.exit(1);
-		}
-	);
-	/**
-	 * ID: menutup server saay diberi sinyal SIGINT atau SIGTERM </br>
-	 * EN: closing app gracefully when process on SIGINT or SIGTERM
-	 */
-	const gracefulShutdownHandler = () => {
-		process.exit();
-	};
-	process.on("SIGINT", gracefulShutdownHandler);
-	process.on("SIGTERM", gracefulShutdownHandler);
+  // Error Handling
+  app.use(errorHandler);
+  // Unhandling Rejection Expection
+  process.on(
+    "unhandledRejection",
+    /**
+     * ID: semua error yang tidak di tangkap ErrorHandler akan mengarah kesini </br>
+     * EN: all unhandle using ErrorHandler error will go here
+     * @param {string} reason
+     * @param {Promise<any>} p
+     */
+    (reason, p) => {
+      console.log(p);
+      throw reason;
+    },
+  );
+  process.on(
+    "uncaughtException",
+    /**
+     * ID: semua error yang fatal akan menuju kesini, dan server akan menutup paksa </br>
+     * EN: all fatal error might go here, and the server will force close
+     * @param {Error} error
+     */
+    (error) => {
+      console.log(error);
+      process.exit(1);
+    },
+  );
+  /**
+   * ID: menutup server saay diberi sinyal SIGINT atau SIGTERM </br>
+   * EN: closing app gracefully when process on SIGINT or SIGTERM
+   */
+  const gracefulShutdownHandler = () => {
+    process.exit();
+  };
+  process.on("SIGINT", gracefulShutdownHandler);
+  process.on("SIGTERM", gracefulShutdownHandler);
 };
 
 module.exports = loaderApp;
