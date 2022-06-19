@@ -7,8 +7,8 @@ const router = Router();
 const controllers = require("./controllers");
 
 router.get("/:id?", controllers.getController);
-// router.post("/:id?", controllers.get);
-// router.put("/:id?", controllers.get);
-// router.delete("/:id?", controllers.get);
+router.post("/", controllers.postController);
+router.put("/:id", controllers.putController);
+router.delete("/:id", controllers.deleteController);
 
 module.exports = router;

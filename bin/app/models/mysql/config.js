@@ -33,7 +33,6 @@ module.exports.execQuery = async (queries) => {
 		database: process.env.DB_NAME,
 		multipleStatements: true,
 	});
-	console.log(queries);
 	const [rows] = await connection.query(queries);
 	return rows;
 };

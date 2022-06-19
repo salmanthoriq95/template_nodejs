@@ -5,7 +5,7 @@
  *
  * @param {object} payload
  * @param {boolean} payload.success
- * @param {any} payload.data
+ * @param {any} [payload.data]
  * @param {string} [payload.message]
  * @returns {object}
  */
