@@ -29,7 +29,7 @@
 		"deploy": "node bin/server.js",
 		"jsdoc": "rm -rf ./docs/ && jsdoc -c ./jsdoc.json"
 	},
-	"type": "commonjs",
+	"type": "module",
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
@@ -48,4 +48,3 @@
 		"mysql2": "^2.3.3"
 	}
 }
-
