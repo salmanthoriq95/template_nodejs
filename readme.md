@@ -1,4 +1,4 @@
-# NODE JS TEMPLATE [![GitHub package.json version](https://img.shields.io/github/package-json/v/salmanthoriq95/template_nodejs?style=for-the-badge)](https://github.com/salmanthoriq95/template_nodejs)
+# NODE JS TEMPLATE [![GitHub package.json version](https://img.shields.io/github/package-json/v/salmanthoriq95/templates?style=for-the-badge)](https://github.com/salmanthoriq95/template_nodejs)
 
 [![Twitter Follow](https://img.shields.io/twitter/follow/far_is_man?style=flat-square)](https://twitter.com/far_is_man)
 [![GitHub last commit](https://img.shields.io/github/last-commit/salmanthoriq95/template_nodejs?style=flat-square)](https://github.com/salmanthoriq95/template_nodejs/graphs/commit-activity)
