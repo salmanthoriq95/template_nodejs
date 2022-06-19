@@ -32,4 +32,4 @@ class HttpExpection extends Error {
   }
 }
 
-module.exports = HttpExpection;
+export default HttpExpection;

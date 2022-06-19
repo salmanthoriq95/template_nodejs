@@ -8,7 +8,7 @@
  * @param {string} [payload.message]
  * @returns {object}
  */
-module.exports = (payload) => ({
+export default (payload) => ({
   success: payload.success,
   message: payload.message,
   data: payload.data,

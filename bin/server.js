@@ -17,19 +17,19 @@
  */
 
 // importing express
-const express = require("express");
+import express from "express";
 
 // set up enverionment variables
-const path = require("path");
-
-const envName = !process.env.ENV_NAME ? "PROD" : `${process.env.ENV_NAME}`;
-const dotenv = require("dotenv");
-
-dotenv.config({ path: path.resolve(__dirname, `../env/${envName}.env`) });
+import { resolve } from "path";
+import { config as _config } from "dotenv";
 
 // impert middlewares
-const config = require("./app/config");
-const loaderApp = require("./app");
+import _app from "./app/config/index";
+import loaderApp from "./app";
+
+const envName = !process.env.ENV_NAME ? "PROD" : `${process.env.ENV_NAME}`;
+
+_config({ path: resolve(__dirname, `../env/${envName}.env`) });
 
 const app = express();
 
@@ -37,16 +37,15 @@ const app = express();
 loaderApp(app);
 
 // start the server
-app.listen(+config.app.PORT, () => {
-  console.clear();
+app.listen(+_app.PORT, () => {
   // Run server
   if (process.env.APP_HOST !== "TEST") {
     console.log(
-      `[INFO] [${new Date().toLocaleString()}] [${config.app.HOST} on port ${
-        config.app.PORT
-      } is Running]`,
+      `[INFO] [${new Date().toLocaleString()}] [${_app.HOST} on port ${
+        _app.PORT
+      } is Running]`
     );
   }
 });
 
-module.exports = app;
+export default app;

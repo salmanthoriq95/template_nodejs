@@ -1,27 +1,27 @@
 // @ts-check
 
-const {
+import {
   getData,
   postData,
   putData,
   deleteData,
-} = require("../../../models/mysql/queries/news.queries");
-const formatReturn = require("../../../utilities/return.formatter");
+} from "../../../models/mysql/queries/news.queries";
+import formatReturn from "../../../utilities/return.formatter";
 
-module.exports.getService = async (payload) => {
+export async function getService(payload) {
   const data = await getData(payload.id);
   return formatReturn({ success: true, data, message: "success get data" });
-};
+}
 
-module.exports.postService = async (payload) => {
+export async function postService(payload) {
   await postData(payload);
   return formatReturn({ success: true, message: "success add data" });
-};
-module.exports.putService = async (payload) => {
+}
+export async function putService(payload) {
   putData(payload);
   return formatReturn({ success: true, message: "success edit data" });
-};
-module.exports.deleteService = async (payload) => {
+}
+export async function deleteService(payload) {
   deleteData(payload);
   return formatReturn({ success: true, message: "success delete data" });
-};
+}

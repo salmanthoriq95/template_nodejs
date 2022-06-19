@@ -15,7 +15,7 @@
  */
 
 // eslint-disable-next-line no-unused-vars
-const { Request, Response, NextFunction } = require("express");
+import { Request, Response, NextFunction } from "express";
 
 /**
  * ID: body utama untuk kostumisasi error handler </br></br>
@@ -78,8 +78,8 @@ const ErrorHandle = (error, req, res, next) => {
       : {
           name: "Internal Server Error",
           message: "Please contact administrator",
-        },
+        }
   );
 };
 
-module.exports = ErrorHandle;
+export default ErrorHandle;

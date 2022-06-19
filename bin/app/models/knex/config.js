@@ -1,16 +1,16 @@
 // @ts-check
 
-const { knex } = require("knex");
-const config = require("../../config");
+import { knex } from "knex";
+import mySqlDb from "../../config";
 
-module.exports = knex({
+export default knex({
   client: "mysql2",
   connection: {
-    host: config.mySqlDb.HOST,
-    database: config.mySqlDb.DATABASE,
-    port: +config.mySqlDb.PORT,
-    user: config.mySqlDb.USER,
-    password: config.mySqlDb.PASSWORD,
+    host: mySqlDb.HOST,
+    database: mySqlDb.DATABASE,
+    port: +mySqlDb.PORT,
+    user: mySqlDb.USER,
+    password: mySqlDb.PASSWORD,
     multipleStatements: true,
   },
 });

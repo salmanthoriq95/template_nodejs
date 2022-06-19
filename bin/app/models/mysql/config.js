@@ -13,9 +13,9 @@
  * you can config host, username, password, database name, etc in this file.
  */
 
-const mysql = require("mysql2/promise");
+import { createPool } from "mysql2/promise";
 // eslint-disable-next-line no-unused-vars
-const { RowDataPacket, OkPacket, ResultSetHeader } = require("mysql2");
+import { RowDataPacket, OkPacket, ResultSetHeader } from "mysql2";
 
 /**
  * ID: Ini adalah method untuk melakukan query ke MySql, semua query sudah di sanitize sebelum dieksekusi. </br>
@@ -23,8 +23,8 @@ const { RowDataPacket, OkPacket, ResultSetHeader } = require("mysql2");
  * @param {*} queries
  * @returns {Promise<RowDataPacket[] | RowDataPacket[][] | OkPacket | OkPacket[] | ResultSetHeader>}
  */
-module.exports.execQuery = async (queries) => {
-  const connection = mysql.createPool({
+export default async function execQuery(queries) {
+  const connection = createPool({
     // port: process.env.DB_PORT,
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -34,4 +34,4 @@ module.exports.execQuery = async (queries) => {
   });
   const [rows] = await connection.query(queries);
   return rows;
-};
+}

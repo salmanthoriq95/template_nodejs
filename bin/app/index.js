@@ -1,12 +1,12 @@
 // @ts-check
 
 // eslint-disable-next-line no-unused-vars
-const { Application } = require("express");
+import { Application } from "express";
 
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const errorHandler = require("./errors");
-const routes = require("./routes");
+import cors from "cors";
+import { json, urlencoded } from "body-parser";
+import errorHandler from "./errors";
+import routes from "./routes";
 
 // const Logger = require("./utils/logger");
 // const logger = new Logger();
@@ -29,8 +29,8 @@ const routes = require("./routes");
 const loaderApp = (app) => {
   //  set up middleware which will run before every request
   app.use(cors());
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(json());
+  app.use(urlencoded({ extended: false }));
   // app.use(logger.log);
 
   // Routing
@@ -50,7 +50,7 @@ const loaderApp = (app) => {
     (reason, p) => {
       console.log(p);
       throw reason;
-    },
+    }
   );
   process.on(
     "uncaughtException",
@@ -62,7 +62,7 @@ const loaderApp = (app) => {
     (error) => {
       console.log(error);
       process.exit(1);
-    },
+    }
   );
   /**
    * ID: menutup server saay diberi sinyal SIGINT atau SIGTERM </br>
@@ -75,4 +75,4 @@ const loaderApp = (app) => {
   process.on("SIGTERM", gracefulShutdownHandler);
 };
 
-module.exports = loaderApp;
+export default loaderApp;

@@ -1,13 +1,13 @@
 // @ts-check
 
-const Joi = require("joi");
-const HttpExpection = require("../../../errors/HttpExpection");
+import { object, number, string } from "joi";
+import HttpExpection from "../../../errors/HttpExpection";
 
-module.exports.getValidator = (payload) => {
-  const schema = Joi.object({
-    debug: Joi.number().valid(1).optional(),
-    trace: Joi.number().valid(1).optional(),
-    id: Joi.number().optional(),
+export function getValidator(payload) {
+  const schema = object({
+    debug: number().valid(1).optional(),
+    trace: number().valid(1).optional(),
+    id: number().optional(),
   });
 
   const validate = schema.validate({
@@ -24,15 +24,15 @@ module.exports.getValidator = (payload) => {
   }
 
   return validate.value;
-};
+}
 
-module.exports.postValidator = (payload) => {
-  const schema = Joi.object({
-    debug: Joi.number().valid(1).optional(),
-    trace: Joi.number().valid(1).optional(),
-    title: Joi.string().required(),
-    content: Joi.string().required(),
-    author: Joi.string().optional().allow("", null),
+export function postValidator(payload) {
+  const schema = object({
+    debug: number().valid(1).optional(),
+    trace: number().valid(1).optional(),
+    title: string().required(),
+    content: string().required(),
+    author: string().optional().allow("", null),
   });
 
   const validate = schema.validate({
@@ -51,16 +51,16 @@ module.exports.postValidator = (payload) => {
   }
 
   return validate.value;
-};
+}
 
-module.exports.putValidator = (payload) => {
-  const schema = Joi.object({
-    debug: Joi.number().valid(1).optional(),
-    trace: Joi.number().valid(1).optional(),
-    title: Joi.string().required(),
-    content: Joi.string().required(),
-    author: Joi.string().optional().allow("", null),
-    id: Joi.number().required(),
+export function putValidator(payload) {
+  const schema = object({
+    debug: number().valid(1).optional(),
+    trace: number().valid(1).optional(),
+    title: string().required(),
+    content: string().required(),
+    author: string().optional().allow("", null),
+    id: number().required(),
   });
 
   const validate = schema.validate({
@@ -80,13 +80,13 @@ module.exports.putValidator = (payload) => {
   }
 
   return validate.value;
-};
+}
 
-module.exports.deleteValidator = (payload) => {
-  const schema = Joi.object({
-    debug: Joi.number().valid(1).optional(),
-    trace: Joi.number().valid(1).optional(),
-    id: Joi.number().required(),
+export function deleteValidator(payload) {
+  const schema = object({
+    debug: number().valid(1).optional(),
+    trace: number().valid(1).optional(),
+    id: number().required(),
   });
 
   const validate = schema.validate({
@@ -103,4 +103,4 @@ module.exports.deleteValidator = (payload) => {
   }
 
   return validate.value;
-};
+}

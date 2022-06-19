@@ -1,14 +1,19 @@
 // @ts-check
 
-const { Router } = require("express");
+import { Router } from "express";
+
+import {
+  getController,
+  postController,
+  putController,
+  deleteController,
+} from "./controllers";
 
 const router = Router();
 
-const controllers = require("./controllers");
+router.get("/:id?", getController);
+router.post("/", postController);
+router.put("/:id", putController);
+router.delete("/:id", deleteController);
 
-router.get("/:id?", controllers.getController);
-router.post("/", controllers.postController);
-router.put("/:id", controllers.putController);
-router.delete("/:id", controllers.deleteController);
-
-module.exports = router;
+export default router;

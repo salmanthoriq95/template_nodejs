@@ -28,6 +28,5 @@ class NewsTable {
 }
 
 const newsTable = new NewsTable();
-module.exports = newsTable;
-module.exports.default = newsTable;
-module.exports.properties = newsTable.PROPERTIES;
+export default newsTable;
+export const properties = newsTable.PROPERTIES;

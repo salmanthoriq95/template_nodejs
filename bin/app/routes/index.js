@@ -1,11 +1,9 @@
 // @ts-check
 
-const { Router } = require("express");
+import { Router } from "express";
+
+import root from "../controllers/root/_routes.root";
 
 const router = Router();
 
-const root = require("../controllers/root/_routes.root");
-
-module.exports = {
-  template: router.use("/", root),
-};
+export default { root: router.use("/", root) };
