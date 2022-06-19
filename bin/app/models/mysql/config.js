@@ -15,6 +15,7 @@
  */
 
 const mysql = require("mysql2");
+// eslint-disable-next-line no-unused-vars
 const { RowDataPacket, OkPacket, ResultSetHeader } = require("mysql2");
 
 /**
@@ -56,7 +57,6 @@ class MysqlConfig {
 	 * @returns {any}
 	 */
 	checkConnection() {
-		const connection = this.connection;
 		return this.connection.connect((err) => {
 			if (err) {
 				console.log(err);
