@@ -36,11 +36,15 @@ loaderApp(app);
 
 // start the server
 app.listen(+config.app.PORT, () => {
-	console.clear();
-	// Run server
-	if (process.env.APP_HOST !== "TEST") {
-		console.log(`[INFO] [${new Date().toLocaleString()}] [${config.app.HOST} on port ${config.app.PORT} is Running]`);
-	}
+  console.clear();
+  // Run server
+  if (process.env.APP_HOST !== "TEST") {
+    console.log(
+      `[INFO] [${new Date().toLocaleString()}] [${config.app.HOST} on port ${
+        config.app.PORT
+      } is Running]`
+    );
+  }
 });
 
 module.exports = app;
