@@ -11,18 +11,18 @@ jest.mock("../../../models/mysql/queries/news.queries", () =>
   require("../../../models/mysql/mock/news.mock")
 );
 
+beforeAll(() => {
+  dotenv.config({
+    path: path.resolve(__dirname, `'../../../../../env/test.env'`),
+  });
+  server(app);
+});
+
+afterAll(() => {
+  jest.resetModules();
+});
+
 describe("HTTP Request get /", () => {
-  beforeAll(() => {
-    dotenv.config({
-      path: path.resolve(__dirname, `'../../../../../env/test.env'`),
-    });
-    server(app);
-  });
-
-  afterAll(() => {
-    jest.resetModules();
-  });
-
   it("Get / 200", (done) => {
     request(app).get("/").expect(200, done);
   });
